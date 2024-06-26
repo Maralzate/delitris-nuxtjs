@@ -30,6 +30,12 @@
               </svg>
             </button>
           </UDropdown>
+          <UToggle size="lg" 
+                class="mr-2 top-2",
+                on-icon="i-heroicons-sun-20-solid"
+                off-icon="i-heroicons-moon-16-solid"
+                color="tris"
+                v-model="selected1" v-on:click="setColorTheme()" />
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
@@ -43,6 +49,8 @@
                 class=" hover:bg-tris-light hover:text-tris rounded-md px-3 py-2 text-sm font-medium">{{ $t('navHome') }} </NuxtLink>
               <NuxtLink to="/bakery" active-class="bg-tris text-green-50 rounded-md px-3 py-2 text-sm font-medium" 
                 class="hover:bg-tris-light hover:text-tris rounded-md px-3 py-2 text-sm font-medium">{{ $t('navBakery') }}</NuxtLink>
+              <NuxtLink to="/cake" active-class="bg-tris text-green-50 rounded-md px-3 py-2 text-sm font-medium" 
+                class=" hover:bg-tris-light hover:text-tris rounded-md px-3 py-2 text-sm font-medium">{{ $t('navCake') }}</NuxtLink>
               <NuxtLink to="/frozen" active-class="bg-tris text-green-50 rounded-md px-3 py-2 text-sm font-medium" 
                 class=" hover:bg-tris-light hover:text-tris rounded-md px-3 py-2 text-sm font-medium">{{ $t('navFrozen') }}</NuxtLink>
               <NuxtLink to="/contact" active-class="bg-tris text-green-50 rounded-md px-3 py-2 text-sm font-medium"
@@ -65,7 +73,7 @@
 
           <div class="relative ml-3">
             <UToggle size="lg" 
-                class="mr-2 top-2",
+                class="mr-2 top-2 sm:hidden",
                 on-icon="i-heroicons-sun-20-solid"
                 off-icon="i-heroicons-moon-16-solid"
                 color="tris"
@@ -73,9 +81,6 @@
             
             <UDropdown class="px-2 mb-4 " :items="language" :popper="{ placement: 'bottom-start' }">
               <UButton color="white" label="" trailing-icon="i-heroicons-chevron-down-20-solid">{{ locale }}</UButton>
-            </UDropdown>
-            <UDropdown class="top-3" :items="settings" :popper="{ placement: 'bottom-start' }">
-              <UAvatar src="https://tse3.mm.bing.net/th/id/OIG3.pzJ6RhRTp1Br3nJXouwS?pid=ImgGn" />
             </UDropdown>
           </div>
 
@@ -114,38 +119,6 @@ const selected1 = ref(false)
 
 var selected2 = false
 
-const color_mode = [
-  [{
-    label: 'System',
-    value: 'system',
-    click: () => {
-      // set Spanish language.
-      colorMode.preference = 'system'
-    }
-  }],
-  [{
-    label: 'light',
-    value: 'light',
-    click: () => {
-      //set English language.
-      colorMode.preference = 'light'
-    }
-  }], [{
-    label: 'Dark',
-    value: 'dark',
-    click: () => {
-      // set Spanish language.
-      colorMode.preference = 'dark'
-    }
-  }], [{
-    label: 'Sepia',
-    value: 'sepia',
-    click: () => {
-      // set Spanish language.
-      colorMode.preference = 'sepia'
-    }
-  }]
-]
 
 const setColorTheme = () => {
   if (selected2) {
@@ -170,37 +143,28 @@ const menu_mobile = [
       location.href= '/'
     }
   }], [{
-    label: 'Decks',
-    value: 'Info',
+    label: 'Horneados',
+    value: 'Horneados',
     click: () => {
-      location.href= '/decks'
+      location.href= '/bakery'
     }
   }], [{
-    label: 'Info',
-    value: 'Info',
+    label: 'Tortas',
+    value: 'Tortas',
+    click: () => {
+      location.href= '/cake'
+    }
+  }], [{
+    label: 'Congelados',
+    value: 'Congelados',
+    click: () => {
+      location.href= '/frozen'
+    }
+  }], [{
+    label: 'contact',
+    value: 'contact',
     click: () => {
       location.href= '/contact'
-    }
-  }]]
-
-const settings = [
-  [{
-    label: 'Your Profile',
-    value: 'Profile',
-    click: () => {
-      //set English language.
-    }
-  }], [{
-    label: 'Settings',
-    value: 'settings',
-    click: () => {
-      //set English language.
-    }
-  }], [{
-    label: 'Sign Out',
-    value: 'sing-out',
-    click: () => {
-      // set Spanish language.
     }
   }]]
 
