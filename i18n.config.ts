@@ -13,7 +13,11 @@ export default defineI18nConfig(() => ({
         cakeH1: 'Cakes for Pet in Medellin',
         bakeryH1: 'Baked Foods for Pet in Medellín',
         frozenH1: 'Frozen Foods for Pets in Medellín',
-        contactH1: 'Contact Us'
+        contactH1: 'Contact Us',
+        cakeCom: 'Cakes for dogs and cats',
+        bakeryCom: 'Baked foods for pets',
+        frozenCom: 'Frozen pet food',
+        contactCom: ''
       },
       es: {
         welcome: 'Bienvenido',
@@ -22,11 +26,15 @@ export default defineI18nConfig(() => ({
         navFrozen: 'Congelados',
         navCake: 'Tortas',
         navContact: 'Contáctanos',
-        indexH1: 'Reposteria Para Mascotas en Medellín',
+        indexH1: 'Repostería para Mascotas en Medellín',
         cakeH1: 'Tortas para Mascotas en Medellín',
         bakeryH1: 'Horneados para Mascota en Medellín',
-        frozenH1: 'Congelados Para Mascotas en Medellín',
-        contactH1: 'Contáctenos'
+        frozenH1: 'Congelados para Mascotas en Medellín',
+        contactH1: 'Contáctenos',
+        cakeCom: 'Tortas para perros y gatos',
+        bakeryCom: 'Horneados para mascotas',
+        frozenCom: 'Comida congelada para mascota',
+        contactCom: ''
       }
     }
   }))

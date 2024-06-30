@@ -10,7 +10,7 @@
            <div class="text-left pt-1 pb-2">
                 
                 <p class="py-1 text-sm break-words" >{{ ingredients }}</p>
-                <p class="py-1 text-sm break-words">{{ price }}</p>
+                <p class="py-1 text-xl text-tris-dim dark:text-tris-soft break-words">{{ price }}</p>
             </div>
        </div>
     </div>
