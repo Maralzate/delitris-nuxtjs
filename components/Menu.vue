@@ -30,12 +30,6 @@
               </svg>
             </button>
           </UDropdown>
-          <UToggle size="lg" 
-                class="mr-2 top-2",
-                on-icon="i-heroicons-sun-20-solid"
-                off-icon="i-heroicons-moon-16-solid"
-                color="tris"
-                v-model="selected1" v-on:click="setColorTheme()" />
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
@@ -71,9 +65,9 @@
 
           <!-- Profile dropdown -->
 
-          <div class="relative ml-3">
+          <div class="flex flex-wrap  ">
             <UToggle size="lg" 
-                class="mr-2 top-2 sm:hidden",
+                class="mr-1 top-2 border-tris-light",
                 on-icon="i-heroicons-sun-20-solid"
                 off-icon="i-heroicons-moon-16-solid"
                 color="tris"
