@@ -1,5 +1,5 @@
 <template >
-    <div :class="`flex flex-row p-2 border-2 rounded-md h-96 max-h-fit w-64 min-w-64 max-w-64 mx-1 my-2 mx-2 ${style} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`">
+    <div :class="`flex flex-row border-2 rounded-md h-96 max-h-fit w-64 min-w-64 max-w-64 mx-1  mx-2 ${style} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`">
         <div class="bg-tris-soft dark:bg-tris-dim rounded-md p-2" >
             <div class="flex flex-colubm justify-center items-center ">
                 <div class="">
