@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#b8c2b0] dark:bg-[#16180c]">
+    <div class="dark:bg-[#16180c]">
         <Menu />
         <slot></slot>
     </div>

@@ -1,13 +1,46 @@
 <template>
+  <Swiper
+  :modules="[SwiperAutoplay, SwiperEffectCreative]"
+    :slides-per-view="1"
+    :loop="true"
+    :effect="'creative'"
+    :autoplay="{
+      delay: 8000,
+      disableOnInteraction: true,
+    }"
+    :creative-effect="{
+      prev: {
+        shadow: false,
+        translate: ['-20%', 0, -1],
+      },
+      next: {
+        translate: ['100%', 0, 0],
+      },
+    }"
+  >
+    <SwiperSlide v-for="card in productB" :key="card">
+      <strong>{{ card.title }}</strong>
+      <div :class="`flex flex-row border-2 rounded-md h-96 max-h-fit w-64 min-w-64 max-w-64 mx-1  mx-2 ${card.style} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`">
+        <div class="bg-tris-soft dark:bg-tris-dim rounded-md p-2 hide-scroll-bar " >
+            <div class="flex flex-colubm justify-center items-center ">
+                <div class="">
+                    <img class="rounded-full bg-transparent size-52 max-w-52 max-h-52" :src="`/images/${card.image1}.png`">
+                    </div>
+            </div>
+            <h2 class="uppercase">{{ card.title }}</h2>
+                <div class="text-left pt-1 pb-2">
+                    <p class="py-1 text-sm break-words" >{{ card.ingredients }}</p>
+                    <p class="py-1 text-xl text-tris-dim dark:text-tris-soft break-words">{{ card.price }}</p>
+                </div>
+            </div>
+        </div>
+    </SwiperSlide>
+  </Swiper>
 
-    <div class="flex flex-nowrap overflow-x-auto  my-8">
-        <Card class="flex-shrink-0" v-for="card in productB" :key="card.id" :="card"></Card>
-    </div>
-    
      
 </template>
 
 <script setup lang="ts">
     import { productA , productB } from '~/data/product-es.json'
-    import Carousel from 'primevue/carousel';
+    import Carousel from 'primevue/carousel'    
 </script>
