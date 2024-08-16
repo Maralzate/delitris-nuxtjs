@@ -165,7 +165,9 @@
     "strict": true,
     "noImplicitThis": true,
     "esModuleInterop": true,
-    "types": [],
+    "types": [
+      "swiper/vue"
+    ],
     "verbatimModuleSyntax": true,
     "allowJs": true,
     "noEmit": true,
@@ -183,6 +185,7 @@
     "../node_modules/@nuxtjs/i18n/runtime",
     "../node_modules/@pinia/nuxt/runtime",
     "../node_modules/nuxt-primevue/runtime",
+    "../node_modules/nuxt-swiper/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
     ".."
@@ -197,6 +200,7 @@
     "../node_modules/@nuxtjs/i18n/runtime/server",
     "../node_modules/@pinia/nuxt/runtime/server",
     "../node_modules/nuxt-primevue/runtime/server",
+    "../node_modules/nuxt-swiper/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../dist",

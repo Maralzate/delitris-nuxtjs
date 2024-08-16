@@ -1,6 +1,6 @@
 <template >
     <div :class="`flex flex-row border-2 rounded-md h-96 max-h-fit w-64 min-w-64 max-w-64 mx-1  mx-2 ${style} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`">
-        <div class="bg-tris-soft dark:bg-tris-dim rounded-md p-2" >
+        <div class="bg-tris-soft dark:bg-tris-dim rounded-md p-2 hide-scroll-bar " >
             <div class="flex flex-colubm justify-center items-center ">
                 <div class="">
                     <img class="rounded-full bg-transparent size-52 max-w-52 max-h-52" :src="`/images/${image1}.png`">
@@ -54,5 +54,12 @@
   .card-inner:hover {
      transform: scale(1.06);
   }
+  .hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
 
 </style>
