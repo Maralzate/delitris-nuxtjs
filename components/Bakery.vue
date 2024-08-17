@@ -1,26 +1,19 @@
 <template>
   <Swiper
-  :modules="[SwiperAutoplay, SwiperEffectCreative]"
-    :slides-per-view="1"
-    :loop="true"
-    :effect="'creative'"
-    :autoplay="{
-      delay: 8000,
-      disableOnInteraction: true,
+  :slidesPerView="3"
+    :grid="{
+      rows: 1,
     }"
-    :creative-effect="{
-      prev: {
-        shadow: false,
-        translate: ['-20%', 0, -1],
-      },
-      next: {
-        translate: ['100%', 0, 0],
-      },
+    :spaceBetween="30"
+    :pagination="{
+      clickable: true,
     }"
+    :modules="modules"
+    class="mySwiper"
   >
     <SwiperSlide v-for="card in productB" :key="card">
-      <strong>{{ card.title }}</strong>
-      <div :class="`flex flex-row border-2 rounded-md h-96 max-h-fit w-64 min-w-64 max-w-64 mx-1  mx-2 ${card.style} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`">
+      
+      <div :class="`flex flex-row border-2 rounded-md h-96 max-h-fit w-64 min-w-64 max-w-64 mx-1  mx-4 ${card.style} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`">
         <div class="bg-tris-soft dark:bg-tris-dim rounded-md p-2 hide-scroll-bar " >
             <div class="flex flex-colubm justify-center items-center ">
                 <div class="">
@@ -42,5 +35,10 @@
 
 <script setup lang="ts">
     import { productA , productB } from '~/data/product-es.json'
-    import Carousel from 'primevue/carousel'    
+    import Carousel from 'primevue/carousel'
+
+    import { Grid, Pagination } from 'swiper/modules';
+
+    const  modules = [Grid, Pagination]
+
 </script>
