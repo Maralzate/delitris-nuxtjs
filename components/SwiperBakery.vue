@@ -1,15 +1,17 @@
 <template>
     <Swiper
-    :slidesPerView="2"
-    :spaceBetween="30"
-    :navigation="true"
-    :pagination="{
-      clickable: true,
-    }"
-    :modules="modules"
-    class="mySwiper"
+    :slidesPerView="3"
+      :grid="{
+        rows: 1,
+      }"
+      :spaceBetween="50"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="modules"
+      class="mySwiper"
     >
-      <SwiperSlide v-for="card in productC" key="card">
+      <SwiperSlide v-for="card in productB" key="card">
         
         <div :class="`flex flex-row border-2 rounded-md h-auto max-h-fit w-64 min-w-64 max-w-64 mx-1  mx-2 ${card.style} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`">
           <div class="bg-tris-soft dark:bg-tris-dim rounded-md p-2 hide-scroll-bar " >
@@ -32,15 +34,13 @@
           </div>
       </SwiperSlide>
     </Swiper>
+</template>
   
-       
-  </template>
-  
-  <script setup lang="ts">
-      import { productC } from '~/data/product-es.json'
-      import { Keyboard, Scrollbar, Navigation, Pagination  } from 'swiper/modules'
-  
-      const  modules = [Pagination, Navigation]
-  
-  </script>
+<script setup lang="ts">
+  import {productB} from '~/data/product-es.json'
+  import { Grid, Pagination } from 'swiper/modules'
+
+  const  modules = [Grid, Pagination]
+
+</script>
   
