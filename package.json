@@ -13,16 +13,20 @@
     "@nuxt/ui": "^2.15.1",
     "@nuxtjs/i18n": "^8.3.0",
     "@pinia/nuxt": "^0.5.1",
+    "@primevue/themes": "^4.0.5",
     "nuxt": "^3.11.2",
     "nuxt-swiper": "^1.2.2",
     "pinia": "^2.1.7",
-    "primevue": "^3.52.0",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.0.5",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@iconify-json/solar": "^1.2.0",
     "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "@primevue/nuxt-module": "^4.0.5",
     "nuxt-icon": "^0.6.10",
     "nuxt-primevue": "^3.0.0"
   }

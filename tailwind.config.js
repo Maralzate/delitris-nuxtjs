@@ -10,6 +10,8 @@ export default {
         textdark: '#16180c',
         textlight: '#d4d8ca',
         textblue: '#214859',
+        logodark: '#3a5522',
+        logolight: '#729951',
         tris: {
           blue: '#214859',
           light: '#aab296',

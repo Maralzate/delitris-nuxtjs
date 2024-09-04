@@ -22,14 +22,14 @@
                 <p class="pt-12 pb-4 px-4 text-xl md:text-2xl dark:text-tris-soft">{{ $t('bakeryP1') }}</p>
             </div>
             <div class="lg:w-1/2 pl-4 relative">
-                <SwiperBakery ></SwiperBakery>
+                <Bakery ></Bakery>
             </div>
         </div>
         
         <h2  class="text-5xl pl-4 text-tris dark:text-tris-soft">{{ $t('cakeCom') }}</h2>
         <div class="flex flex-wrap my-24">
             <div class="lg:w-1/2 pl-4 pr-16 relative">
-                <SwiperCake></SwiperCake>
+                <Cake></Cake>
             </div>
             <div class="lg:w-1/2 relative">
                 <p class="pt-12 pb-4 px-4 text-xl md:text-2xl dark:text-tris-soft">{{ $t('cakeP1') }}</p>
@@ -42,7 +42,7 @@
                 <p class="pt-12 pb-4 px-4 text-xl md:text-2xl dark:text-tris-soft">{{ $t('frozenP1') }}</p>
             </div>
             <div class="lg:w-1/2 pl-4 relative">
-                <SwiperFrozen></SwiperFrozen>
+                <Frozen></Frozen>
             </div>
         </div>  
     </div>
