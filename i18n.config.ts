@@ -38,7 +38,7 @@ export default defineI18nConfig(() => ({
         cakeCom: 'Tortas para perros y gatos',
         bakeryCom: 'Horneados para mascotas',
         frozenCom: 'Comida congelada para mascotas',
-        contactCom: '',
+        contactCom: 'Has tus pedidos Ahora',
         cakeP1: 'Sorprende a tu mascota en su cumpleaños o en cualquier ocasión especial con una deliciosa torta personalizada. Utilizamos ingredientes aptos para mascotas y decoraciones creativas para crear un postre único que encantará a tu peludito.',
         bakeryP1: 'Ofrecemos una amplia variedad de galletas, brownis,  y muffins horneados con harinas de avena, frutas frescas, verduras y proteínas magras. Nuestras recetas están cuidadosamente elaboradas para brindar a tu peludo amigo el sabor que anhela y los nutrientes que necesita para una vida sana y feliz.',
         frozenP1: 'Disfruta de la comodidad de tener siempre a mano comida saludable y deliciosa para tu mascota. Nuestra comida congelada está elaborada con ingredientes frescos y de alta calidad, y se conserva perfectamente para ofrecer a tu peludo amigo una comida nutritiva y sabrosa en cualquier momento.',
