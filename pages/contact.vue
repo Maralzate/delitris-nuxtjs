@@ -1,5 +1,8 @@
 <template>
-    <h1>{{ $t('frozenCom') }}</h1>
+    <div class="container mx-auto w-full">
+
+        <h1>{{ $t('contactCom') }}</h1>
+    </div>
 </template>
 
 <script setup lang="ts">

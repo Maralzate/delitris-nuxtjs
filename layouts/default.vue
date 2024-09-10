@@ -1,7 +1,6 @@
 <template>
     <div class="bg-[#ffffff] dark:bg-[#16180c]">
         <Navbar />
-        <slot></slot>
         <div class="">
             <div class="card p-3">
                 <div :style="{ position: 'fixed', height: '350px' }">
@@ -9,6 +8,8 @@
                 </div>
             </div>
         </div>
+        <slot></slot>
+        
         
         <Footer/>
 
