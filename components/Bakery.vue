@@ -15,7 +15,13 @@
                         <div class="mt-0 font-semibold text-xl">{{ slotProps.data.price }}</div>
                         <span>
                             <Button icon="pi pi-heart" severity="secondary" outlined />
-                            <Button icon="pi pi-shopping-cart" class="ml-2"/>
+                            <ULink
+                                to="https://wa.me/573144905895"
+                                active-class="text-tris bg-tris"
+                                inactive-class="rounded-lg text-white ml-2 px-2 py-4 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
+                            >
+                            <Icon name="majesticons:search-plus" size="2em"   />
+                            </ULink>
                         </span>
                     </div>
                 </div>

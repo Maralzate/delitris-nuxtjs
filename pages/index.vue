@@ -37,11 +37,11 @@
         </div> 
         
         <div class="md:flex md:flex-nowrap my-24">
-            <div class=" ">
+            <div class=" pl-4 w-full">
                 <h2  class="text-5xl text-tris dark:text-tris-soft">{{ $t('frozenCom') }}</h2>
                 <p class="pt-12 pb-4 px-4 text-xl md:text-2xl dark:text-tris-soft">{{ $t('frozenP1') }}</p>
             </div>
-            <div class="pl-4 w-full ">
+            <div class="pl-4">
                 <Frozen></Frozen>
             </div>
         </div>  
