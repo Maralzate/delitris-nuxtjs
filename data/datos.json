@@ -1,0 +1,58 @@
+{
+"imagenes": [
+    {
+    "css": "",
+    "titulo": "Jon",
+    "link": ""
+    },
+    {
+    "css": "",
+    "titulo": "",
+    "link": ""
+    },
+    {
+    "css": "",
+    "titulo": "",
+    "link": ""
+    },
+    {
+    "css": "",
+    "titulo": "",
+    "link": ""
+    },
+    {
+    "css": "",
+    "titulo": "",
+    "link": ""
+    }
+]
+},
+{
+    "beneficios_salud": [
+        {
+        "css": "",
+        "Titulo": "Salud cardiovascular",
+        "texto": "La fibra soluble de la avena ayuda a reducir los niveles de colesterol 'malo' (LDL) y triglicéridos, lo que disminuye el riesgo de enfermedades cardiovasculares."
+        },
+        {
+        "css": "",
+        "Titulo": "Control de la diabetes:",
+        "texto": "La liberación gradual de azúcar en sangre que proporciona la avena es beneficiosa para personas con diabetes, ya que ayuda a mantener los niveles de glucosa estables."
+        },
+        {
+        "css": "",
+        "Titulo": "Salud digestiva",
+        "texto": "La fibra de la avena promueve una flora intestinal saludable y previene problemas digestivos como el estreñimiento y la diarrea."
+        },
+        {
+        "css": "",
+        "Titulo": "Pérdida de peso",
+        "texto": "La avena es un alimento saciante que puede ayudar a controlar el apetito y reducir la ingesta calórica, lo que puede favorecer la pérdida de peso."
+        },
+        {
+        "css": "",
+        "Titulo": "Salud de la piel",
+        "texto": "Los antioxidantes de la avena tienen propiedades antiinflamatorias que pueden ayudar a aliviar la picazón y la irritación de la piel."
+        }
+    ]
+    }

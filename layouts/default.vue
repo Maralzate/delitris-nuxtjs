@@ -10,8 +10,10 @@
         </div>
         <slot></slot>
         
-        
-        <Footer/>
+        <div class="mx-4">
+
+            <Footer/>
+        </div>
 
     </div>
 </template>
@@ -33,7 +35,7 @@ const items = ref([
         }
     },
     {
-        label: 'Update',
+        label: 'Teléfono}',
         icon: 'pi pi-phone',
         command: () => {
             toast.add({ severity: 'success', summary: 'Update', detail: 'Data Updated' });
