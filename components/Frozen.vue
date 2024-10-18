@@ -9,10 +9,10 @@
                             <Tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute" style="left:5px; top: 5px"/>
                         </div>
                     </div>
-                    <div class="mb-4 font-semibold text-2xl">{{ slotProps.data.title }}</div>
-                    <div class="mb-4 font-medium">{{ slotProps.data.ingredients }}</div>
+                    <div class="mb-4 font-medium text-2xl text-tris-dim dark:text-tris-soft">{{ slotProps.data.title }}</div>
+                    <div class="mb-4 font-medium dark:text-tris-light">{{ slotProps.data.ingredients }}</div>
                     <div class="flex justify-between items-center">
-                        <div class="mt-0 font-semibold text-xl">{{ slotProps.data.price }}</div>
+                        <div class="mt-0 font-semibold text-2xl dark:text-tris-soft">{{ slotProps.data.price }}</div>
                         <span>
                             <Button icon="pi pi-heart" severity="secondary" outlined />
                             <ULink
