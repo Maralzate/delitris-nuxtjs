@@ -7,7 +7,7 @@
                   alt="Delitris">
             </div>
             <div class="">
-                <img class="rounded-3xl w-auto" src="/images/tristan2-min.jpeg"
+                <img class="rounded-3xl w-auto" src="/images/portada.png"
                   alt="Delitris">
             </div>
 

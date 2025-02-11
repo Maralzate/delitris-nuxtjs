@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/ui', '@nuxtjs/color-mode', '@nuxtjs/tailwindcss', "@nuxtjs/i18n", '@pinia/nuxt', 'nuxt-icon','nuxt-swiper','@primevue/nuxt-module'],
   css: ['~/assets/css/main.css'],
+
   primevue: {
     options: {
       theme: {
@@ -15,12 +16,16 @@ export default defineNuxtConfig({
       }
     }
   },
+
   icon: {
     serverBundle: {
       collections: ['uil', 'solar'] 
     }
   },
+
   colorMode: {
     classSuffix: ''
-  }
+  },
+
+  compatibilityDate: '2025-02-11'
 })

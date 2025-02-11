@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "/home/developer/Documents/NuxtProject/delitris-nuxtjs/node_modules/nuxt/dist/app/entry.js": {
+  "/home/developer/Documents/projects/delitris-nuxtjs/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "/home/developer/Documents/NuxtProject/delitris-nuxtjs/node_modules/nuxt/dist/app/entry.js"
+    "file": "/home/developer/Documents/projects/delitris-nuxtjs/node_modules/nuxt/dist/app/entry.js"
   }
 }
