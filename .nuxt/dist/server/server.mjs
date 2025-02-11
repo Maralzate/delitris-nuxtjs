@@ -1,1 +1,1 @@
-export { default } from "file:///home/developer/Documents/NuxtProject/delitris-nuxtjs/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
