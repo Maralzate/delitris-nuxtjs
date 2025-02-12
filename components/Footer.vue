@@ -12,7 +12,7 @@ const form = reactive({ email: 'mail@example.com', password: 'password' })
         <div  class="flex flex-nowrap">
             
             <Icon name="solar:phone-calling-rounded-line-duotone" size="1.6em" class="text-white " style="color: black" />
-            <h4 class="text-xl pl-4">3144905895</h4>
+            <h4 class="text-xl pl-4">3332850072</h4>
         </div>
 
         <div  class="flex flex-nowrap">
@@ -44,7 +44,7 @@ const form = reactive({ email: 'mail@example.com', password: 'password' })
           <Icon name="brandico:instagram" size="3em"   /> 
           </ULink>
           <ULink
-            to="https://wa.me/573144905895"
+            to="https://wa.me/573332850072"
             active-class="text-tris bg-tris"
             inactive-class="text-tris dark:text-logodark hover:text-tris-light dark:text-logolight dark:hover:text-logodark"
           >

@@ -53,5 +53,18 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
+
+useHead({
+  title: t('nameTitle'),
+  meta:[
+    {name:"description",content:t('indexH1')},
+    {property:"og:description",content:t('indexH1')},
+    {property:"og:image",content:"https://delitris.pet/images/Logo-Delitris-Circle.png"},
+    {name:"twitter:card",content:`sumary_large_image`},
+  ],
+})
+
 
 </script>
