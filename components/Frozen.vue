@@ -13,16 +13,43 @@
                     <div class="mb-4 font-medium dark:text-tris-light">{{ slotProps.data.ingredients }}</div>
                     <div class="flex justify-between items-center">
                         <div class="mt-0 font-semibold text-2xl dark:text-tris-soft">{{ slotProps.data.price }}</div>
-                        <span>
-                            <Button icon="pi pi-heart" severity="secondary" outlined />
-                            <ULink
-                                to="https://wa.me/573144905895"
-                                active-class="text-tris bg-tris"
-                                inactive-class="rounded-lg text-white ml-2 px-2 py-4 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
-                            >
-                            <Icon name="majesticons:search-plus" size="2em"   />
-                            </ULink>
-                        </span>
+                        <div class="flex justify-center items-center " >
+                            <div >
+                                <div v-if="slotProps.data.animalType != 'both'">
+                                    <UTooltip :text="`Ideal Para ${slotProps.data.animalType}`" :popper="{ arrow: true }">
+                                    <ULink
+                                    to=""
+                                    active-class="text-tris bg-tris"
+                                    inactive-class="rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
+                                >
+                                        <Icon v-if="slotProps.data.animalType === 'perros'" name="tabler:dog"  size="2em" />
+                                        <Icon v-else name="tabler:cat"  size="2em" />
+                                    </ULink>
+                                </UTooltip>
+                                </div>
+                                <div v-else>
+                                    <UTooltip text="Ideal Para Perros & Gatos" :popper="{ arrow: true }">
+                                    <ULink
+                                    to=""
+                                    active-class="text-tris bg-tris"
+                                    inactive-class="rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
+                                >
+                                        <Icon name="tabler:cat" class="" active-class="text-tris bg-tris" size="2em"/>
+                                        <Icon name="tabler:dog" class="" active-class="text-tris bg-tris" size="2em"/>
+                                    </ULink>
+                                </UTooltip>
+                                </div>
+                            </div>
+                            <div>
+                                <ULink
+                                    to="https://wa.me/573332850072"
+                                    active-class="text-tris bg-tris"
+                                    inactive-class="rounded-lg text-white ml-2 px-2 py-4 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
+                                >
+                                    <Icon name="mdi:whatsapp" size="2em"/>
+                                </ULink>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </template>

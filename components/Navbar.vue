@@ -47,11 +47,11 @@ var selected2 = false
 const setColorTheme = () => {
   if (selected2) {
     useColorMode().preference = 'light'
-    console.log("light Color")
+    console.log("light Color"+ useColorMode().preference)
     selected2 = false
   } else if (selected2 === false) {
     useColorMode().preference = 'dark'
-    console.log("light Color")
+    console.log("light Color"+useColorMode().preference)
     selected2 = true
   } else {
     useColorMode().preference = 'sepia'

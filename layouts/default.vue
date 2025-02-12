@@ -11,10 +11,8 @@
         <slot></slot>
         
         <div class="mx-4">
-
             <Footer/>
         </div>
-
     </div>
 </template>
 <script setup lang="ts">
@@ -31,7 +29,7 @@ const items = ref([
         icon: 'pi pi-whatsapp',
         command: () => {
             toast.add({ severity: 'info', summary: 'Add', detail: 'Data Added' });
-            window.location.href = ' https://wa.me/573144905895';
+            window.location.href = ' https://wa.me/573332850072';
         }
     },
     {
@@ -39,7 +37,7 @@ const items = ref([
         icon: 'pi pi-phone',
         command: () => {
             toast.add({ severity: 'success', summary: 'Update', detail: 'Data Updated' });
-            window.location.href = 'tel:3144905895';
+            window.location.href = 'tel:3332850072';
         }
     }    
 ])

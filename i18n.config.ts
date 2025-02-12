@@ -3,13 +3,14 @@ export default defineI18nConfig(() => ({
     locale: 'es',
     messages: {
       en: {
+        nameTitle: 'Delitris',
         welcome: 'Welcome',
         navHome: 'Home',
         navBakery: 'Bakery',
         navFrozen: 'Frozen',
         navCake: 'Cake',
         navContact: 'Contact',
-        indexH1: 'Artisan Pet Baking in Medellín',
+        indexH1: 'Pet Baking in Medellín',
         cakeH1: 'Cakes for Pet in Medellin',
         bakeryH1: 'Baked Foods for Pet in Medellín',
         frozenH1: 'Frozen Foods for Pets in Medellín',
@@ -24,13 +25,14 @@ export default defineI18nConfig(() => ({
         contactP1: ''
       },
       es: {
+        nameTitle: 'Delitris',
         welcome: 'Bienvenido',
         navHome: 'Inicio',
         navBakery: 'Horneados',
         navFrozen: 'Congelados',
         navCake: 'Tortas',
         navContact: 'Contáctanos',
-        indexH1: 'Repostería Artesanal para Mascotas en Medellín',
+        indexH1: 'Repostería para Mascotas Medellín',
         cakeH1: 'Tortas para Mascotas en Medellín',
         bakeryH1: 'Horneados para Mascota en Medellín',
         frozenH1: 'Congelados para Mascotas en Medellín',

@@ -30,6 +30,7 @@
         price:String,
         discount:String,
         productType:String,
+        animalType:String,
         style:String,
         background:String,
         image1:String,
