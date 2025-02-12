@@ -34,10 +34,9 @@
                                     to=""
                                     active-class="text-tris bg-tris"
                                     inactive-class="rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
-                                    placeholder="Para Gatos & perros"
                                 >
-                                        <Icon name="tabler:cat" class="" active-class="text-tris bg-tris" size="2em"/>
-                                        <Icon name="tabler:dog" class="" active-class="text-tris bg-tris" size="2em"/>
+                                        <Icon name="tabler:cat" class="" size="2em"/>
+                                        <Icon name="tabler:dog" class="" size="2em"/>
                                     </ULink>
                                 </UTooltip>
                                 </div>
@@ -46,7 +45,7 @@
                                 <ULink
                                     to="https://wa.me/573332850072"
                                     active-class="text-tris bg-tris"
-                                    inactive-class="rounded-lg text-white ml-2 px-2 py-4 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
+                                    inactive-class="flex items-center rounded-lg text-white ml-2 px-2 py-4 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
                                 >
                                     <Icon name="mdi:whatsapp" size="2em"/>
                                 </ULink>

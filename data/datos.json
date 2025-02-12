@@ -1,33 +1,4 @@
 {
-"imagenes": [
-    {
-    "css": "",
-    "titulo": "Jon",
-    "link": ""
-    },
-    {
-    "css": "",
-    "titulo": "",
-    "link": ""
-    },
-    {
-    "css": "",
-    "titulo": "",
-    "link": ""
-    },
-    {
-    "css": "",
-    "titulo": "",
-    "link": ""
-    },
-    {
-    "css": "",
-    "titulo": "",
-    "link": ""
-    }
-]
-},
-{
     "beneficios_salud": [
         {
         "css": "",
@@ -55,4 +26,4 @@
         "texto": "Los antioxidantes de la avena tienen propiedades antiinflamatorias que pueden ayudar a aliviar la picazón y la irritación de la piel."
         }
     ]
-    }
+}
