@@ -22,20 +22,20 @@
                                     active-class="text-tris bg-tris"
                                     inactive-class="rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
                                 >
-                                        <Icon v-if="slotProps.data.animalType === 'perros'" name="tabler:dog"  size="2em" />
+                                        <Icon v-if="slotProps.data.animalType === 'perros'" name="tabler:dog"  size="2em"/>
                                         <Icon v-else name="tabler:cat"  size="2em" />
                                     </ULink>
                                 </UTooltip>
                                 </div>
-                                <div v-else>
+                                <div v-else class="">
                                     <UTooltip text="Ideal Para Perros & Gatos" :popper="{ arrow: true }">
                                     <ULink
                                     to=""
                                     active-class="text-tris bg-tris"
-                                    inactive-class="rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
+                                    inactive-class="flex items-center rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
                                 >
-                                        <Icon name="tabler:cat" class="" active-class="text-tris bg-tris" size="2em"/>
-                                        <Icon name="tabler:dog" class="" active-class="text-tris bg-tris" size="2em"/>
+                                        <Icon name="tabler:cat" class="inline-block align-middle" size="2em"/>
+                                        <Icon name="tabler:dog" class="inline-block align-middle" size="2em"/>
                                     </ULink>
                                 </UTooltip>
                                 </div>
