@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#ffffff] dark:bg-[#16180c]">
+    <div class="bg-[#ffffff] dark:bg-[#16180c] font-[Boogaloo]">
         <Navbar />
         <div class="">
             <div class="card p-3">

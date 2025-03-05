@@ -19,12 +19,16 @@
             </template>
             <template #end>
                 <div class="flex items-center gap-2">
+                    <LocaleSwitcher />
+                    <ColorSwitcher />
+                    <!--
                     <UToggle size="lg" 
                         class="mr-1 top-2 border-tris-light",
                         on-icon="i-heroicons-sun-20-solid"
                         off-icon="i-heroicons-moon-16-solid"
                         color="tris"
                         v-model="selected1" v-on:click="setColorTheme()"/>
+                        -->
                     <Avatar image="/images/Logo-Delitris-Circle.png" shape="circle" class="bg-white"/>
                 </div>
             </template>
@@ -78,7 +82,7 @@ const items = ref([
         label: 'Tortas',
         icon: 'akar-icons:cake',
         command: () => {
-            router.push('/cake');
+            router.push('/cakes');
         }
     },
     {

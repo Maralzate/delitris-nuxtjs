@@ -2,6 +2,7 @@
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noEmit": true,
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -16,20 +17,22 @@
         "./types/nitro-imports"
       ],
       "~/*": [
-        "../*",
         "../*"
       ],
       "@/*": [
-        "../*",
         "../*"
       ],
       "~~/*": [
-        "../*",
         "../*"
       ],
       "@@/*": [
-        "../*",
         "../*"
+      ],
+      "nitropack/types": [
+        "../node_modules/nitropack/types"
+      ],
+      "nitropack/runtime": [
+        "../node_modules/nitropack/runtime"
       ],
       "nitropack": [
         "../node_modules/nitropack"
@@ -49,14 +52,17 @@
       "@unhead/vue": [
         "../node_modules/@unhead/vue"
       ],
+      "@nuxt/devtools": [
+        "../node_modules/@nuxt/devtools"
+      ],
       "@vue/runtime-core": [
         "../node_modules/@vue/runtime-core"
       ],
       "@vue/compiler-sfc": [
         "../node_modules/@vue/compiler-sfc"
       ],
-      "@vue/runtime-dom": [
-        "../node_modules/@vue/runtime-dom"
+      "unplugin-vue-router/client": [
+        "../node_modules/unplugin-vue-router/client"
       ],
       "@nuxt/schema": [
         "../node_modules/@nuxt/schema"
@@ -64,8 +70,8 @@
       "nuxt": [
         "../node_modules/nuxt"
       ],
-      "#internal/nuxt/paths": [
-        "../node_modules/nuxt/dist/core/runtime/nitro/paths"
+      "vite/client": [
+        "../node_modules/vite/client"
       ],
       "~": [
         "./.."
@@ -79,6 +85,9 @@
       "@@": [
         "./.."
       ],
+      "#shared": [
+        "../shared"
+      ],
       "assets": [
         "../assets"
       ],
@@ -90,6 +99,15 @@
       ],
       "public/*": [
         "../public/*"
+      ],
+      "#build": [
+        "./"
+      ],
+      "#build/*": [
+        "./*"
+      ],
+      "#internal/nuxt/paths": [
+        "../node_modules/nuxt/dist/core/runtime/nitro/paths"
       ],
       "#ui": [
         "../node_modules/@nuxt/ui/dist/runtime"
@@ -144,8 +162,16 @@
       ],
       "#primevue-style": [
         "./primevue-style"
+      ],
+      "#vue-router": [
+        "./vue-router"
       ]
-    }
+    },
+    "lib": [
+      "esnext",
+      "webworker",
+      "dom.iterable"
+    ]
   },
   "include": [
     "./types/nitro-nuxt.d.ts",
@@ -166,6 +192,16 @@
   "exclude": [
     "../node_modules",
     "../node_modules/nuxt/node_modules",
+    "../node_modules/nuxt-icon/node_modules",
+    "../node_modules/@nuxtjs/color-mode/node_modules",
+    "../node_modules/@nuxtjs/tailwindcss/node_modules",
+    "../node_modules/@nuxt/ui/node_modules",
+    "../node_modules/@nuxtjs/i18n/node_modules",
+    "../node_modules/@pinia/nuxt/node_modules",
+    "../node_modules/nuxt-swiper/node_modules",
+    "../node_modules/@primevue/nuxt-module/node_modules",
+    "../node_modules/@nuxt/devtools/node_modules",
+    "../node_modules/@nuxt/telemetry/node_modules",
     "../dist"
   ]
 }
