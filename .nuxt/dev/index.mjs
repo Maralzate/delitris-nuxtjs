@@ -1,78 +1,621 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { Server } from 'node:http';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-import { mkdirSync } from 'node:fs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, setResponseStatus, setResponseHeader, send, getRequestHeaders, setResponseHeaders, getRequestURL, sendRedirect, getResponseHeader, defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setHeaders, proxyRequest, createError, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, readBody, getQuery as getQuery$1, getResponseStatusText } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/h3/dist/index.mjs';
+import { Server } from 'node:http';
+import { resolve, dirname, join } from 'node:path';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/h3/dist/index.mjs';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/devalue/index.js';
 import destr from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/destr/dist/index.mjs';
 import { renderToString } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/vue/server-renderer/index.mjs';
-import { hash } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/ohash/dist/index.mjs';
-import { renderSSRHead } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/@unhead/ssr/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/ofetch/dist/node.mjs';
-import { createCall, createFetch } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/unenv/runtime/fetch/index.mjs';
+import { propsToString, renderSSRHead } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/@unhead/ssr/dist/index.mjs';
 import { createHooks } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/ofetch/dist/node.mjs';
+import { callNodeRequestHandler, fetchNodeRequestHandler } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/node-mock-http/dist/index.mjs';
 import { klona } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/klona/dist/index.mjs';
-import { snakeCase } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/scule/dist/index.mjs';
 import defu, { defuFn } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/scule/dist/index.mjs';
 import { createStorage, prefixStorage } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/unstorage/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/unstorage/drivers/fs.mjs';
 import { toRouteMatcher, createRouter } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/radix3/dist/index.mjs';
-import { AsyncLocalStorage } from 'node:async_hooks';
-import { consola } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/consola/dist/index.mjs';
 import { getContext } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/unctx/dist/index.mjs';
+import { digest } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/nitropack/node_modules/ohash/dist/index.mjs';
+import { readFile } from 'node:fs/promises';
+import consola, { consola as consola$1 } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/youch-core/build/index.js';
+import { Youch } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/source-map/source-map.js';
+import { AsyncLocalStorage } from 'node:async_hooks';
+import { captureRawStackTrace, parseRawStackTrace } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/errx/dist/index.js';
+import { isVNode, unref, version } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/vue/index.mjs';
 import BaseStyle from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/@primevue/core/base/style/index.mjs';
-import { isNotEmpty, isEmpty } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/@primeuix/utils/object/index.mjs';
 import { Theme } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/@primeuix/styled/index.mjs';
-import { version, unref } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/vue/index.mjs';
-import { createServerHead as createServerHead$1 } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/unhead/dist/index.mjs';
+import { createServerHead as createServerHead$1, CapoPlugin } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/unhead/dist/index.mjs';
 import { defineHeadPlugin } from 'file:///home/developer/Documents/projects/delitris-nuxtjs/node_modules/@unhead/shared/dist/index.mjs';
 
-const r=Object.create(null),E=e=>globalThis.process?.env||globalThis._importMeta_.env||globalThis.Deno?.env.toObject()||globalThis.__env__||(e?r:globalThis),s=new Proxy(r,{get(e,o){return E()[o]??r[o]},has(e,o){const i=E();return o in i||o in r},set(e,o,i){const g=E(!0);return g[o]=i,!0},deleteProperty(e,o){if(!o)return !1;const i=E(!0);return delete i[o],!0},ownKeys(){const e=E(!0);return Object.keys(e)}}),t=typeof process<"u"&&process.env&&"development"||"",p=[["APPVEYOR"],["AWS_AMPLIFY","AWS_APP_ID",{ci:!0}],["AZURE_PIPELINES","SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"],["AZURE_STATIC","INPUT_AZURE_STATIC_WEB_APPS_API_TOKEN"],["APPCIRCLE","AC_APPCIRCLE"],["BAMBOO","bamboo_planKey"],["BITBUCKET","BITBUCKET_COMMIT"],["BITRISE","BITRISE_IO"],["BUDDY","BUDDY_WORKSPACE_ID"],["BUILDKITE"],["CIRCLE","CIRCLECI"],["CIRRUS","CIRRUS_CI"],["CLOUDFLARE_PAGES","CF_PAGES",{ci:!0}],["CODEBUILD","CODEBUILD_BUILD_ARN"],["CODEFRESH","CF_BUILD_ID"],["DRONE"],["DRONE","DRONE_BUILD_EVENT"],["DSARI"],["GITHUB_ACTIONS"],["GITLAB","GITLAB_CI"],["GITLAB","CI_MERGE_REQUEST_ID"],["GOCD","GO_PIPELINE_LABEL"],["LAYERCI"],["HUDSON","HUDSON_URL"],["JENKINS","JENKINS_URL"],["MAGNUM"],["NETLIFY"],["NETLIFY","NETLIFY_LOCAL",{ci:!1}],["NEVERCODE"],["RENDER"],["SAIL","SAILCI"],["SEMAPHORE"],["SCREWDRIVER"],["SHIPPABLE"],["SOLANO","TDDIUM"],["STRIDER"],["TEAMCITY","TEAMCITY_VERSION"],["TRAVIS"],["VERCEL","NOW_BUILDER"],["VERCEL","VERCEL",{ci:!1}],["VERCEL","VERCEL_ENV",{ci:!1}],["APPCENTER","APPCENTER_BUILD_ID"],["CODESANDBOX","CODESANDBOX_SSE",{ci:!1}],["STACKBLITZ"],["STORMKIT"],["CLEAVR"],["ZEABUR"],["CODESPHERE","CODESPHERE_APP_ID",{ci:!0}],["RAILWAY","RAILWAY_PROJECT_ID"],["RAILWAY","RAILWAY_SERVICE_ID"]];function B(){if(globalThis.process?.env)for(const e of p){const o=e[1]||e[0];if(globalThis.process?.env[o])return {name:e[0].toLowerCase(),...e[2]}}return globalThis.process?.env?.SHELL==="/bin/jsh"&&globalThis.process?.versions?.webcontainer?{name:"stackblitz",ci:!1}:{name:"",ci:!1}}const l=B(),d=l.name;function n(e){return e?e!=="false":!1}const I=globalThis.process?.platform||"",T=n(s.CI)||l.ci!==!1,R=n(globalThis.process?.stdout&&globalThis.process?.stdout.isTTY);n(s.DEBUG);const C=t==="test"||n(s.TEST);n(s.MINIMAL)||T||C||!R;const a=/^win/i.test(I);!n(s.NO_COLOR)&&(n(s.FORCE_COLOR)||(R||a)&&s.TERM!=="dumb"||T);const _=(globalThis.process?.versions?.node||"").replace(/^v/,"")||null;Number(_?.split(".")[0])||null;const W=globalThis.process||Object.create(null),c={versions:{}};new Proxy(W,{get(e,o){if(o==="env")return s;if(o in e)return e[o];if(o in c)return c[o]}});const A=globalThis.process?.release?.name==="node",L=!!globalThis.Bun||!!globalThis.process?.versions?.bun,D=!!globalThis.Deno,O=!!globalThis.fastly,S=!!globalThis.Netlify,N=!!globalThis.EdgeRuntime,u=globalThis.navigator?.userAgent==="Cloudflare-Workers",b=!!globalThis.__lagon__,F=[[S,"netlify"],[N,"edge-light"],[u,"workerd"],[O,"fastly"],[D,"deno"],[L,"bun"],[A,"node"],[b,"lagon"]];function G(){const e=F.find(o=>o[0]);if(e)return {name:e[1]}}const P=G();P?.name||"";
+const HASH_RE = /#/g;
+const AMPERSAND_RE = /&/g;
+const SLASH_RE = /\//g;
+const EQUAL_RE = /=/g;
+const PLUS_RE = /\+/g;
+const ENC_CARET_RE = /%5e/gi;
+const ENC_BACKTICK_RE = /%60/gi;
+const ENC_PIPE_RE = /%7c/gi;
+const ENC_SPACE_RE = /%20/gi;
+function encode(text) {
+  return encodeURI("" + text).replace(ENC_PIPE_RE, "|");
+}
+function encodeQueryValue(input) {
+  return encode(typeof input === "string" ? input : JSON.stringify(input)).replace(PLUS_RE, "%2B").replace(ENC_SPACE_RE, "+").replace(HASH_RE, "%23").replace(AMPERSAND_RE, "%26").replace(ENC_BACKTICK_RE, "`").replace(ENC_CARET_RE, "^").replace(SLASH_RE, "%2F");
+}
+function encodeQueryKey(text) {
+  return encodeQueryValue(text).replace(EQUAL_RE, "%3D");
+}
+function decode(text = "") {
+  try {
+    return decodeURIComponent("" + text);
+  } catch {
+    return "" + text;
+  }
+}
+function decodeQueryKey(text) {
+  return decode(text.replace(PLUS_RE, " "));
+}
+function decodeQueryValue(text) {
+  return decode(text.replace(PLUS_RE, " "));
+}
 
-function getEnv(key, opts) {
-  const envKey = snakeCase(key).toUpperCase();
-  return destr(
-    process.env[opts.prefix + envKey] ?? process.env[opts.altPrefix + envKey]
-  );
-}
-function _isObject(input) {
-  return typeof input === "object" && !Array.isArray(input);
-}
-function applyEnv(obj, opts, parentKey = "") {
-  for (const key in obj) {
-    const subKey = parentKey ? `${parentKey}_${key}` : key;
-    const envValue = getEnv(subKey, opts);
-    if (_isObject(obj[key])) {
-      if (_isObject(envValue)) {
-        obj[key] = { ...obj[key], ...envValue };
-        applyEnv(obj[key], opts, subKey);
-      } else if (envValue === void 0) {
-        applyEnv(obj[key], opts, subKey);
-      } else {
-        obj[key] = envValue ?? obj[key];
-      }
-    } else {
-      obj[key] = envValue ?? obj[key];
+function parseQuery(parametersString = "") {
+  const object = {};
+  if (parametersString[0] === "?") {
+    parametersString = parametersString.slice(1);
+  }
+  for (const parameter of parametersString.split("&")) {
+    const s = parameter.match(/([^=]+)=?(.*)/) || [];
+    if (s.length < 2) {
+      continue;
     }
-    if (opts.envExpansion && typeof obj[key] === "string") {
-      obj[key] = _expandFromEnv(obj[key]);
+    const key = decodeQueryKey(s[1]);
+    if (key === "__proto__" || key === "constructor") {
+      continue;
+    }
+    const value = decodeQueryValue(s[2] || "");
+    if (object[key] === void 0) {
+      object[key] = value;
+    } else if (Array.isArray(object[key])) {
+      object[key].push(value);
+    } else {
+      object[key] = [object[key], value];
     }
   }
-  return obj;
+  return object;
 }
-const envExpandRx = /{{(.*?)}}/g;
-function _expandFromEnv(value) {
-  return value.replace(envExpandRx, (match, key) => {
-    return process.env[key] || match;
+function encodeQueryItem(key, value) {
+  if (typeof value === "number" || typeof value === "boolean") {
+    value = String(value);
+  }
+  if (!value) {
+    return encodeQueryKey(key);
+  }
+  if (Array.isArray(value)) {
+    return value.map((_value) => `${encodeQueryKey(key)}=${encodeQueryValue(_value)}`).join("&");
+  }
+  return `${encodeQueryKey(key)}=${encodeQueryValue(value)}`;
+}
+function stringifyQuery(query) {
+  return Object.keys(query).filter((k) => query[k] !== void 0).map((k) => encodeQueryItem(k, query[k])).filter(Boolean).join("&");
+}
+
+const PROTOCOL_STRICT_REGEX = /^[\s\w\0+.-]{2,}:([/\\]{1,2})/;
+const PROTOCOL_REGEX = /^[\s\w\0+.-]{2,}:([/\\]{2})?/;
+const PROTOCOL_RELATIVE_REGEX = /^([/\\]\s*){2,}[^/\\]/;
+const JOIN_LEADING_SLASH_RE = /^\.?\//;
+function hasProtocol(inputString, opts = {}) {
+  if (typeof opts === "boolean") {
+    opts = { acceptRelative: opts };
+  }
+  if (opts.strict) {
+    return PROTOCOL_STRICT_REGEX.test(inputString);
+  }
+  return PROTOCOL_REGEX.test(inputString) || (opts.acceptRelative ? PROTOCOL_RELATIVE_REGEX.test(inputString) : false);
+}
+function hasTrailingSlash(input = "", respectQueryAndFragment) {
+  {
+    return input.endsWith("/");
+  }
+}
+function withoutTrailingSlash(input = "", respectQueryAndFragment) {
+  {
+    return (hasTrailingSlash(input) ? input.slice(0, -1) : input) || "/";
+  }
+}
+function withTrailingSlash(input = "", respectQueryAndFragment) {
+  {
+    return input.endsWith("/") ? input : input + "/";
+  }
+}
+function withoutBase(input, base) {
+  if (isEmptyURL(base)) {
+    return input;
+  }
+  const _base = withoutTrailingSlash(base);
+  if (!input.startsWith(_base)) {
+    return input;
+  }
+  const trimmed = input.slice(_base.length);
+  return trimmed[0] === "/" ? trimmed : "/" + trimmed;
+}
+function withQuery(input, query) {
+  const parsed = parseURL(input);
+  const mergedQuery = { ...parseQuery(parsed.search), ...query };
+  parsed.search = stringifyQuery(mergedQuery);
+  return stringifyParsedURL(parsed);
+}
+function getQuery(input) {
+  return parseQuery(parseURL(input).search);
+}
+function isEmptyURL(url) {
+  return !url || url === "/";
+}
+function isNonEmptyURL(url) {
+  return url && url !== "/";
+}
+function joinURL(base, ...input) {
+  let url = base || "";
+  for (const segment of input.filter((url2) => isNonEmptyURL(url2))) {
+    if (url) {
+      const _segment = segment.replace(JOIN_LEADING_SLASH_RE, "");
+      url = withTrailingSlash(url) + _segment;
+    } else {
+      url = segment;
+    }
+  }
+  return url;
+}
+function joinRelativeURL(..._input) {
+  const JOIN_SEGMENT_SPLIT_RE = /\/(?!\/)/;
+  const input = _input.filter(Boolean);
+  const segments = [];
+  let segmentsDepth = 0;
+  for (const i of input) {
+    if (!i || i === "/") {
+      continue;
+    }
+    for (const [sindex, s] of i.split(JOIN_SEGMENT_SPLIT_RE).entries()) {
+      if (!s || s === ".") {
+        continue;
+      }
+      if (s === "..") {
+        if (segments.length === 1 && hasProtocol(segments[0])) {
+          continue;
+        }
+        segments.pop();
+        segmentsDepth--;
+        continue;
+      }
+      if (sindex === 1 && segments[segments.length - 1]?.endsWith(":/")) {
+        segments[segments.length - 1] += "/" + s;
+        continue;
+      }
+      segments.push(s);
+      segmentsDepth++;
+    }
+  }
+  let url = segments.join("/");
+  if (segmentsDepth >= 0) {
+    if (input[0]?.startsWith("/") && !url.startsWith("/")) {
+      url = "/" + url;
+    } else if (input[0]?.startsWith("./") && !url.startsWith("./")) {
+      url = "./" + url;
+    }
+  } else {
+    url = "../".repeat(-1 * segmentsDepth) + url;
+  }
+  if (input[input.length - 1]?.endsWith("/") && !url.endsWith("/")) {
+    url += "/";
+  }
+  return url;
+}
+
+const protocolRelative = Symbol.for("ufo:protocolRelative");
+function parseURL(input = "", defaultProto) {
+  const _specialProtoMatch = input.match(
+    /^[\s\0]*(blob:|data:|javascript:|vbscript:)(.*)/i
+  );
+  if (_specialProtoMatch) {
+    const [, _proto, _pathname = ""] = _specialProtoMatch;
+    return {
+      protocol: _proto.toLowerCase(),
+      pathname: _pathname,
+      href: _proto + _pathname,
+      auth: "",
+      host: "",
+      search: "",
+      hash: ""
+    };
+  }
+  if (!hasProtocol(input, { acceptRelative: true })) {
+    return parsePath(input);
+  }
+  const [, protocol = "", auth, hostAndPath = ""] = input.replace(/\\/g, "/").match(/^[\s\0]*([\w+.-]{2,}:)?\/\/([^/@]+@)?(.*)/) || [];
+  let [, host = "", path = ""] = hostAndPath.match(/([^#/?]*)(.*)?/) || [];
+  if (protocol === "file:") {
+    path = path.replace(/\/(?=[A-Za-z]:)/, "");
+  }
+  const { pathname, search, hash } = parsePath(path);
+  return {
+    protocol: protocol.toLowerCase(),
+    auth: auth ? auth.slice(0, Math.max(0, auth.length - 1)) : "",
+    host,
+    pathname,
+    search,
+    hash,
+    [protocolRelative]: !protocol
+  };
+}
+function parsePath(input = "") {
+  const [pathname = "", search = "", hash = ""] = (input.match(/([^#?]*)(\?[^#]*)?(#.*)?/) || []).splice(1);
+  return {
+    pathname,
+    search,
+    hash
+  };
+}
+function stringifyParsedURL(parsed) {
+  const pathname = parsed.pathname || "";
+  const search = parsed.search ? (parsed.search.startsWith("?") ? "" : "?") + parsed.search : "";
+  const hash = parsed.hash || "";
+  const auth = parsed.auth ? parsed.auth + "@" : "";
+  const host = parsed.host || "";
+  const proto = parsed.protocol || parsed[protocolRelative] ? (parsed.protocol || "") + "//" : "";
+  return proto + auth + host + pathname + search + hash;
+}
+
+function isJsonRequest(event) {
+  if (hasReqHeader(event, "accept", "text/html")) {
+    return false;
+  }
+  return hasReqHeader(event, "accept", "application/json") || hasReqHeader(event, "user-agent", "curl/") || hasReqHeader(event, "user-agent", "httpie/") || hasReqHeader(event, "sec-fetch-mode", "cors") || event.path.startsWith("/api/") || event.path.endsWith(".json");
+}
+function hasReqHeader(event, name, includes) {
+  const value = getRequestHeader(event, name);
+  return value && typeof value === "string" && value.toLowerCase().includes(includes);
+}
+function normalizeError(error, isDev) {
+  const cwd = typeof process.cwd === "function" ? process.cwd() : "/";
+  const stack = (error.unhandled || error.fatal) ? [] : (error.stack || "").split("\n").splice(1).filter((line) => line.includes("at ")).map((line) => {
+    const text = line.replace(cwd + "/", "./").replace("webpack:/", "").replace("file://", "").trim();
+    return {
+      text,
+      internal: line.includes("node_modules") && !line.includes(".cache") || line.includes("internal") || line.includes("new Promise")
+    };
+  });
+  const statusCode = error.statusCode || 500;
+  const statusMessage = error.statusMessage ?? (statusCode === 404 ? "Not Found" : "");
+  const message = error.unhandled ? "internal server error" : error.message || error.toString();
+  return {
+    stack,
+    statusCode,
+    statusMessage,
+    message
+  };
+}
+
+const errorHandler$0 = (async function errorhandler(error, event) {
+  const { stack, statusCode, statusMessage, message } = normalizeError(error);
+  const errorObject = {
+    url: event.path,
+    statusCode,
+    statusMessage,
+    message,
+    stack: statusCode !== 404 ? `<pre>${stack.map((i) => `<span class="stack${i.internal ? " internal" : ""}">${i.text}</span>`).join("\n")}</pre>` : "",
+    // TODO: check and validate error.data for serialisation into query
+    data: error.data
+  };
+  if (error.unhandled || error.fatal) {
+    const tags = [
+      "[nuxt]",
+      "[request error]",
+      error.unhandled && "[unhandled]",
+      error.fatal && "[fatal]",
+      Number(errorObject.statusCode) !== 200 && `[${errorObject.statusCode}]`
+    ].filter(Boolean).join(" ");
+    console.error(tags, (error.message || error.toString() || "internal server error") + "\n" + stack.map((l) => "  " + l.text).join("  \n"));
+  }
+  if (event.handled) {
+    return;
+  }
+  setResponseStatus(event, errorObject.statusCode !== 200 && errorObject.statusCode || 500, errorObject.statusMessage);
+  if (isJsonRequest(event)) {
+    setResponseHeader(event, "Content-Type", "application/json");
+    return send(event, JSON.stringify(errorObject));
+  }
+  const reqHeaders = getRequestHeaders(event);
+  const isRenderingError = event.path.startsWith("/__nuxt_error") || !!reqHeaders["x-nuxt-error"];
+  const res = isRenderingError ? null : await useNitroApp().localFetch(
+    withQuery(joinURL(useRuntimeConfig(event).app.baseURL, "/__nuxt_error"), errorObject),
+    {
+      headers: { ...reqHeaders, "x-nuxt-error": "true" },
+      redirect: "manual"
+    }
+  ).catch(() => null);
+  if (!res) {
+    const { template } = await Promise.resolve().then(function () { return errorDev; }) ;
+    {
+      errorObject.description = errorObject.message;
+    }
+    if (event.handled) {
+      return;
+    }
+    setResponseHeader(event, "Content-Type", "text/html;charset=UTF-8");
+    return send(event, template(errorObject));
+  }
+  const html = await res.text();
+  if (event.handled) {
+    return;
+  }
+  for (const [header, value] of res.headers.entries()) {
+    setResponseHeader(event, header, value);
+  }
+  setResponseStatus(event, res.status && res.status !== 200 ? res.status : void 0, res.statusText);
+  return send(event, html);
+});
+
+function defineNitroErrorHandler(handler) {
+  return handler;
+}
+function setSecurityHeaders(event, allowjs = false) {
+  setResponseHeaders(event, {
+    // Prevent browser from guessing the MIME types of resources.
+    "X-Content-Type-Options": "nosniff",
+    // Prevent error page from being embedded in an iframe
+    "X-Frame-Options": "DENY",
+    // Prevent browsers from sending the Referer header
+    "Referrer-Policy": "no-referrer",
+    // Disable the execution of any js
+    "Content-Security-Policy": allowjs ? "script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self';" : "script-src 'none'; frame-ancestors 'none';"
   });
 }
 
+const errorHandler$1 = defineNitroErrorHandler(
+  async function defaultNitroErrorHandler(error, event) {
+    const isSensitive = error.unhandled || error.fatal;
+    const statusCode = error.statusCode || 500;
+    const statusMessage = error.statusMessage || "Server Error";
+    const url = getRequestURL(event, { xForwardedHost: true, xForwardedProto: true });
+    if (statusCode === 404) {
+      const baseURL = "/";
+      if (/^\/[^/]/.test(baseURL) && !url.pathname.startsWith(baseURL)) {
+        return sendRedirect(
+          event,
+          `${baseURL}${url.pathname.slice(1)}${url.search}`
+        );
+      }
+    }
+    await loadStackTrace(error).catch(consola.error);
+    const youch = new Youch();
+    if (isSensitive) {
+      const tags = [error.unhandled && "[unhandled]", error.fatal && "[fatal]"].filter(Boolean).join(" ");
+      const columns = process.stderr.columns;
+      const ansiError = await (await youch.toANSI(error)).replaceAll(process.cwd(), ".");
+      if (!columns) {
+        process.stderr.columns = columns;
+      }
+      consola.error(
+        `[request error] ${tags} [${event.method}] ${url}
+
+`,
+        ansiError
+      );
+    }
+    setResponseStatus(event, statusCode, statusMessage);
+    setSecurityHeaders(
+      event,
+      true
+      /* allow js */
+    );
+    if (statusCode === 404 || !getResponseHeader(event, "cache-control")) {
+      setResponseHeader(event, "cache-control", "no-cache");
+    }
+    return getRequestHeader(event, "accept")?.includes("text/html") ? send(
+      event,
+      await youch.toHTML(error, {
+        request: {
+          url: url.href,
+          method: event.method,
+          headers: getRequestHeaders(event)
+        }
+      }),
+      "text/html"
+    ) : send(
+      event,
+      JSON.stringify(
+        {
+          error: true,
+          url,
+          statusCode,
+          statusMessage,
+          message: error.message,
+          data: error.data,
+          stack: error.stack?.split("\n").map((line) => line.trim())
+        },
+        null,
+        2
+      ),
+      "application/json"
+    );
+  }
+);
+async function loadStackTrace(error) {
+  if (!(error instanceof Error)) {
+    return;
+  }
+  const parsed = await new ErrorParser().defineSourceLoader(sourceLoader).parse(error);
+  const stack = error.message + "\n" + parsed.frames.map((frame) => fmtFrame(frame)).join("\n");
+  Object.defineProperty(error, "stack", { value: stack });
+  if (error.cause) {
+    await loadStackTrace(error.cause).catch(consola.error);
+  }
+}
+async function sourceLoader(frame) {
+  if (!frame.fileName || frame.fileType !== "fs" || frame.type === "native") {
+    return;
+  }
+  if (frame.type === "app") {
+    const rawSourceMap = await readFile(`${frame.fileName}.map`, "utf8").catch(() => {
+    });
+    if (rawSourceMap) {
+      const consumer = await new SourceMapConsumer(rawSourceMap);
+      const originalPosition = consumer.originalPositionFor({ line: frame.lineNumber, column: frame.columnNumber });
+      if (originalPosition.source && originalPosition.line) {
+        frame.fileName = resolve(dirname(frame.fileName), originalPosition.source);
+        frame.lineNumber = originalPosition.line;
+        frame.columnNumber = originalPosition.column || 0;
+      }
+    }
+  }
+  const contents = await readFile(frame.fileName, "utf8").catch(() => {
+  });
+  return contents ? { contents } : void 0;
+}
+function fmtFrame(frame) {
+  if (frame.type === "native") {
+    return frame.raw;
+  }
+  const src = `${frame.fileName || ""}:${frame.lineNumber}:${frame.columnNumber})`;
+  return frame.functionName ? `at ${frame.functionName} (${src}` : `at ${src}`;
+}
+
+const errorHandlers = [errorHandler$0, errorHandler$1];
+
+async function errorHandler(error, event) {
+  for (const handler of errorHandlers) {
+    try {
+      await handler(error, event);
+      if (event.handled) {
+        return; // Response handled
+      }
+    } catch(error) {
+      // Handler itself thrown, log and continue
+      console.error(error);
+    }
+  }
+  // H3 will handle fallback
+}
+
+const script$1 = `
+if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
+  Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
+    value: {},
+    enumerable: false,
+    configurable: true,
+  })
+}
+window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
+`;
+
+const _ea_Xk4ntUXZUM3yRLiKiKmPjgPWvn0WXFlAMj73oCzA = (function(nitro) {
+  nitro.hooks.hook("render:html", (htmlContext) => {
+    htmlContext.head.push(`<script>${script$1}<\/script>`);
+  });
+});
+
+const rootDir = "/home/developer/Documents/projects/delitris-nuxtjs";
+
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
+
+const appRootTag = "div";
+
+const appRootAttrs = {"id":"__nuxt"};
+
+const appTeleportTag = "div";
+
+const appTeleportAttrs = {"id":"teleports"};
+
+const appId = "nuxt-app";
+
+const devReducers = {
+  VNode: (data) => isVNode(data) ? { type: data.type, props: data.props } : void 0,
+  URL: (data) => data instanceof URL ? data.toString() : void 0
+};
+const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
+const _mc0yPioS9HlvMsrcTD8IOnxHdDeE35ncCBZsAbmdiXI = (nitroApp) => {
+  const handler = nitroApp.h3App.handler;
+  nitroApp.h3App.handler = (event) => {
+    return asyncContext.callAsync({ logs: [], event }, () => handler(event));
+  };
+  onConsoleLog((_log) => {
+    const ctx = asyncContext.tryUse();
+    if (!ctx) {
+      return;
+    }
+    const rawStack = captureRawStackTrace();
+    if (!rawStack || rawStack.includes("runtime/vite-node.mjs")) {
+      return;
+    }
+    const trace = [];
+    let filename = "";
+    for (const entry of parseRawStackTrace(rawStack)) {
+      if (entry.source === globalThis._importMeta_.url) {
+        continue;
+      }
+      if (EXCLUDE_TRACE_RE.test(entry.source)) {
+        continue;
+      }
+      filename ||= entry.source.replace(withTrailingSlash(rootDir), "");
+      trace.push({
+        ...entry,
+        source: entry.source.startsWith("file://") ? entry.source.replace("file://", "") : entry.source
+      });
+    }
+    const log = {
+      ..._log,
+      // Pass along filename to allow the client to display more info about where log comes from
+      filename,
+      // Clean up file names in stack trace
+      stack: trace
+    };
+    ctx.logs.push(log);
+  });
+  nitroApp.hooks.hook("afterResponse", () => {
+    const ctx = asyncContext.tryUse();
+    if (!ctx) {
+      return;
+    }
+    return nitroApp.hooks.callHook("dev:ssr-logs", { logs: ctx.logs, path: ctx.event.path });
+  });
+  nitroApp.hooks.hook("render:html", (htmlContext) => {
+    const ctx = asyncContext.tryUse();
+    if (!ctx) {
+      return;
+    }
+    try {
+      const reducers = Object.assign(/* @__PURE__ */ Object.create(null), devReducers, ctx.event.context._payloadReducers);
+      htmlContext.bodyAppend.unshift(`<script type="application/json" data-nuxt-logs="${appId}">${stringify(ctx.logs, reducers)}<\/script>`);
+    } catch (e) {
+      const shortError = e instanceof Error && "toString" in e ? ` Received \`${e.toString()}\`.` : "";
+      console.warn(`[nuxt] Failed to stringify dev server logs.${shortError} You can define your own reducer/reviver for rich types following the instructions in https://nuxt.com/docs/api/composables/use-nuxt-app#payload.`);
+    }
+  });
+};
+const EXCLUDE_TRACE_RE = /\/node_modules\/(?:.*\/)?(?:nuxt|nuxt-nightly|nuxt-edge|nuxt3|consola|@vue)\/|core\/runtime\/nitro/;
+function onConsoleLog(callback) {
+  consola$1.addReporter({
+    log(logObj) {
+      callback(logObj);
+    }
+  });
+  consola$1.wrapConsole();
+}
+
+const script = "\"use strict\";(()=>{const a=window,e=document.documentElement,c=window.localStorage,d=[\"dark\",\"light\"],n=c&&c.getItem&&c.getItem(\"nuxt-color-mode\")||\"system\";let l=n===\"system\"?f():n;const i=e.getAttribute(\"data-color-mode-forced\");i&&(l=i),r(l),a[\"__NUXT_COLOR_MODE__\"]={preference:n,value:l,getColorScheme:f,addColorScheme:r,removeColorScheme:u};function r(o){const t=\"\"+o+\"\",s=\"\";e.classList?e.classList.add(t):e.className+=\" \"+t,s&&e.setAttribute(\"data-\"+s,o)}function u(o){const t=\"\"+o+\"\",s=\"\";e.classList?e.classList.remove(t):e.className=e.className.replace(new RegExp(t,\"g\"),\"\"),s&&e.removeAttribute(\"data-\"+s)}function m(o){return a.matchMedia(\"(prefers-color-scheme\"+o+\")\")}function f(){if(a.matchMedia&&m(\"\").media!==\"not all\"){for(const o of d)if(m(\":\"+o).matches)return o}return\"light\"}})();\n";
+
+const _TxzQD6m5OpRVhjHOn8SU5JRWxr388cSV8Hm8F84O4 = (function(nitro) {
+  nitro.hooks.hook("render:html", (htmlContext) => {
+    htmlContext.head.push(`<script>${script}<\/script>`);
+  });
+});
+
 const inlineAppConfig = {
-  "nuxt": {
-    "buildId": "dev"
-  },
+  "nuxt": {},
   "ui": {
     "primary": "green",
     "gray": "cool",
@@ -105,9 +648,48 @@ const inlineAppConfig = {
 
 const appConfig = defuFn(inlineAppConfig);
 
+function getEnv(key, opts) {
+  const envKey = snakeCase(key).toUpperCase();
+  return destr(
+    process.env[opts.prefix + envKey] ?? process.env[opts.altPrefix + envKey]
+  );
+}
+function _isObject(input) {
+  return typeof input === "object" && !Array.isArray(input);
+}
+function applyEnv(obj, opts, parentKey = "") {
+  for (const key in obj) {
+    const subKey = parentKey ? `${parentKey}_${key}` : key;
+    const envValue = getEnv(subKey, opts);
+    if (_isObject(obj[key])) {
+      if (_isObject(envValue)) {
+        obj[key] = { ...obj[key], ...envValue };
+        applyEnv(obj[key], opts, subKey);
+      } else if (envValue === void 0) {
+        applyEnv(obj[key], opts, subKey);
+      } else {
+        obj[key] = envValue ?? obj[key];
+      }
+    } else {
+      obj[key] = envValue ?? obj[key];
+    }
+    if (opts.envExpansion && typeof obj[key] === "string") {
+      obj[key] = _expandFromEnv(obj[key]);
+    }
+  }
+  return obj;
+}
+const envExpandRx = /\{\{([^{}]*)\}\}/g;
+function _expandFromEnv(value) {
+  return value.replace(envExpandRx, (match, key) => {
+    return process.env[key] || match;
+  });
+}
+
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
+    "buildId": "dev",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -6080,303 +6662,217 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const HASH_RE = /#/g;
-const AMPERSAND_RE = /&/g;
-const SLASH_RE = /\//g;
-const EQUAL_RE = /=/g;
-const PLUS_RE = /\+/g;
-const ENC_CARET_RE = /%5e/gi;
-const ENC_BACKTICK_RE = /%60/gi;
-const ENC_PIPE_RE = /%7c/gi;
-const ENC_SPACE_RE = /%20/gi;
-function encode(text) {
-  return encodeURI("" + text).replace(ENC_PIPE_RE, "|");
-}
-function encodeQueryValue(input) {
-  return encode(typeof input === "string" ? input : JSON.stringify(input)).replace(PLUS_RE, "%2B").replace(ENC_SPACE_RE, "+").replace(HASH_RE, "%23").replace(AMPERSAND_RE, "%26").replace(ENC_BACKTICK_RE, "`").replace(ENC_CARET_RE, "^").replace(SLASH_RE, "%2F");
-}
-function encodeQueryKey(text) {
-  return encodeQueryValue(text).replace(EQUAL_RE, "%3D");
-}
-function decode(text = "") {
-  try {
-    return decodeURIComponent("" + text);
-  } catch {
-    return "" + text;
-  }
-}
-function decodeQueryKey(text) {
-  return decode(text.replace(PLUS_RE, " "));
-}
-function decodeQueryValue(text) {
-  return decode(text.replace(PLUS_RE, " "));
-}
-
-function parseQuery(parametersString = "") {
-  const object = {};
-  if (parametersString[0] === "?") {
-    parametersString = parametersString.slice(1);
-  }
-  for (const parameter of parametersString.split("&")) {
-    const s = parameter.match(/([^=]+)=?(.*)/) || [];
-    if (s.length < 2) {
-      continue;
-    }
-    const key = decodeQueryKey(s[1]);
-    if (key === "__proto__" || key === "constructor") {
-      continue;
-    }
-    const value = decodeQueryValue(s[2] || "");
-    if (object[key] === void 0) {
-      object[key] = value;
-    } else if (Array.isArray(object[key])) {
-      object[key].push(value);
-    } else {
-      object[key] = [object[key], value];
-    }
-  }
-  return object;
-}
-function encodeQueryItem(key, value) {
-  if (typeof value === "number" || typeof value === "boolean") {
-    value = String(value);
-  }
-  if (!value) {
-    return encodeQueryKey(key);
-  }
-  if (Array.isArray(value)) {
-    return value.map((_value) => `${encodeQueryKey(key)}=${encodeQueryValue(_value)}`).join("&");
-  }
-  return `${encodeQueryKey(key)}=${encodeQueryValue(value)}`;
-}
-function stringifyQuery(query) {
-  return Object.keys(query).filter((k) => query[k] !== void 0).map((k) => encodeQueryItem(k, query[k])).filter(Boolean).join("&");
-}
-
-const PROTOCOL_STRICT_REGEX = /^[\s\w\0+.-]{2,}:([/\\]{1,2})/;
-const PROTOCOL_REGEX = /^[\s\w\0+.-]{2,}:([/\\]{2})?/;
-const PROTOCOL_RELATIVE_REGEX = /^([/\\]\s*){2,}[^/\\]/;
-const TRAILING_SLASH_RE = /\/$|\/\?|\/#/;
-const JOIN_LEADING_SLASH_RE = /^\.?\//;
-function hasProtocol(inputString, opts = {}) {
-  if (typeof opts === "boolean") {
-    opts = { acceptRelative: opts };
-  }
-  if (opts.strict) {
-    return PROTOCOL_STRICT_REGEX.test(inputString);
-  }
-  return PROTOCOL_REGEX.test(inputString) || (opts.acceptRelative ? PROTOCOL_RELATIVE_REGEX.test(inputString) : false);
-}
-function hasTrailingSlash(input = "", respectQueryAndFragment) {
-  if (!respectQueryAndFragment) {
-    return input.endsWith("/");
-  }
-  return TRAILING_SLASH_RE.test(input);
-}
-function withoutTrailingSlash(input = "", respectQueryAndFragment) {
-  if (!respectQueryAndFragment) {
-    return (hasTrailingSlash(input) ? input.slice(0, -1) : input) || "/";
-  }
-  if (!hasTrailingSlash(input, true)) {
-    return input || "/";
-  }
-  let path = input;
-  let fragment = "";
-  const fragmentIndex = input.indexOf("#");
-  if (fragmentIndex >= 0) {
-    path = input.slice(0, fragmentIndex);
-    fragment = input.slice(fragmentIndex);
-  }
-  const [s0, ...s] = path.split("?");
-  const cleanPath = s0.endsWith("/") ? s0.slice(0, -1) : s0;
-  return (cleanPath || "/") + (s.length > 0 ? `?${s.join("?")}` : "") + fragment;
-}
-function withTrailingSlash(input = "", respectQueryAndFragment) {
-  if (!respectQueryAndFragment) {
-    return input.endsWith("/") ? input : input + "/";
-  }
-  if (hasTrailingSlash(input, true)) {
-    return input || "/";
-  }
-  let path = input;
-  let fragment = "";
-  const fragmentIndex = input.indexOf("#");
-  if (fragmentIndex >= 0) {
-    path = input.slice(0, fragmentIndex);
-    fragment = input.slice(fragmentIndex);
-    if (!path) {
-      return fragment;
-    }
-  }
-  const [s0, ...s] = path.split("?");
-  return s0 + "/" + (s.length > 0 ? `?${s.join("?")}` : "") + fragment;
-}
-function withoutBase(input, base) {
-  if (isEmptyURL(base)) {
-    return input;
-  }
-  const _base = withoutTrailingSlash(base);
-  if (!input.startsWith(_base)) {
-    return input;
-  }
-  const trimmed = input.slice(_base.length);
-  return trimmed[0] === "/" ? trimmed : "/" + trimmed;
-}
-function withQuery(input, query) {
-  const parsed = parseURL(input);
-  const mergedQuery = { ...parseQuery(parsed.search), ...query };
-  parsed.search = stringifyQuery(mergedQuery);
-  return stringifyParsedURL(parsed);
-}
-function getQuery(input) {
-  return parseQuery(parseURL(input).search);
-}
-function isEmptyURL(url) {
-  return !url || url === "/";
-}
-function isNonEmptyURL(url) {
-  return url && url !== "/";
-}
-function joinURL(base, ...input) {
-  let url = base || "";
-  for (const segment of input.filter((url2) => isNonEmptyURL(url2))) {
-    if (url) {
-      const _segment = segment.replace(JOIN_LEADING_SLASH_RE, "");
-      url = withTrailingSlash(url) + _segment;
-    } else {
-      url = segment;
-    }
-  }
-  return url;
-}
-function joinRelativeURL(..._input) {
-  const JOIN_SEGMENT_SPLIT_RE = /\/(?!\/)/;
-  const input = _input.filter(Boolean);
-  const segments = [];
-  let segmentsDepth = 0;
-  for (const i of input) {
-    if (!i || i === "/") {
-      continue;
-    }
-    for (const [sindex, s] of i.split(JOIN_SEGMENT_SPLIT_RE).entries()) {
-      if (!s || s === ".") {
-        continue;
-      }
-      if (s === "..") {
-        if (segments.length === 1 && hasProtocol(segments[0])) {
-          continue;
-        }
-        segments.pop();
-        segmentsDepth--;
-        continue;
-      }
-      if (sindex === 1 && segments[segments.length - 1]?.endsWith(":/")) {
-        segments[segments.length - 1] += "/" + s;
-        continue;
-      }
-      segments.push(s);
-      segmentsDepth++;
-    }
-  }
-  let url = segments.join("/");
-  if (segmentsDepth >= 0) {
-    if (input[0]?.startsWith("/") && !url.startsWith("/")) {
-      url = "/" + url;
-    } else if (input[0]?.startsWith("./") && !url.startsWith("./")) {
-      url = "./" + url;
-    }
-  } else {
-    url = "../".repeat(-1 * segmentsDepth) + url;
-  }
-  if (input[input.length - 1]?.endsWith("/") && !url.endsWith("/")) {
-    url += "/";
-  }
-  return url;
-}
-
-const protocolRelative = Symbol.for("ufo:protocolRelative");
-function parseURL(input = "", defaultProto) {
-  const _specialProtoMatch = input.match(
-    /^[\s\0]*(blob:|data:|javascript:|vbscript:)(.*)/i
-  );
-  if (_specialProtoMatch) {
-    const [, _proto, _pathname = ""] = _specialProtoMatch;
-    return {
-      protocol: _proto.toLowerCase(),
-      pathname: _pathname,
-      href: _proto + _pathname,
-      auth: "",
-      host: "",
-      search: "",
-      hash: ""
-    };
-  }
-  if (!hasProtocol(input, { acceptRelative: true })) {
-    return defaultProto ? parseURL(defaultProto + input) : parsePath(input);
-  }
-  const [, protocol = "", auth, hostAndPath = ""] = input.replace(/\\/g, "/").match(/^[\s\0]*([\w+.-]{2,}:)?\/\/([^/@]+@)?(.*)/) || [];
-  const [, host = "", path = ""] = hostAndPath.match(/([^#/?]*)(.*)?/) || [];
-  const { pathname, search, hash } = parsePath(
-    path.replace(/\/(?=[A-Za-z]:)/, "")
-  );
-  return {
-    protocol: protocol.toLowerCase(),
-    auth: auth ? auth.slice(0, Math.max(0, auth.length - 1)) : "",
-    host,
-    pathname,
-    search,
-    hash,
-    [protocolRelative]: !protocol
-  };
-}
-function parsePath(input = "") {
-  const [pathname = "", search = "", hash = ""] = (input.match(/([^#?]*)(\?[^#]*)?(#.*)?/) || []).splice(1);
-  return {
-    pathname,
-    search,
-    hash
-  };
-}
-function stringifyParsedURL(parsed) {
-  const pathname = parsed.pathname || "";
-  const search = parsed.search ? (parsed.search.startsWith("?") ? "" : "?") + parsed.search : "";
-  const hash = parsed.hash || "";
-  const auth = parsed.auth ? parsed.auth + "@" : "";
-  const host = parsed.host || "";
-  const proto = parsed.protocol || parsed[protocolRelative] ? (parsed.protocol || "") + "//" : "";
-  return proto + auth + host + pathname + search + hash;
-}
-
 const serverAssets = [{"baseName":"server","dir":"/home/developer/Documents/projects/delitris-nuxtjs/server/assets"}];
 
 const assets = createStorage();
 
 for (const asset of serverAssets) {
-  assets.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir }));
+  assets.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir, ignore: (asset?.ignore || []) }));
 }
 
 const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/home/developer/Documents/projects/delitris-nuxtjs","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/home/developer/Documents/projects/delitris-nuxtjs/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/home/developer/Documents/projects/delitris-nuxtjs/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/home/developer/Documents/projects/delitris-nuxtjs/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/home/developer/Documents/projects/delitris-nuxtjs/.data/kv","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/home/developer/Documents/projects/delitris-nuxtjs"}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/home/developer/Documents/projects/delitris-nuxtjs/server"}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/home/developer/Documents/projects/delitris-nuxtjs/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/home/developer/Documents/projects/delitris-nuxtjs/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/home/developer/Documents/projects/delitris-nuxtjs/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
 }
 
-const defaultCacheOptions = {
-  name: "_",
-  base: "/cache",
-  swr: true,
-  maxAge: 1
-};
+function hash(value) {
+  return digest(typeof value === "string" ? value : serialize(value)).replace(/[-_]/g, "").slice(0, 10);
+}
+function serialize(object) {
+  const hasher = new Hasher();
+  hasher.dispatch(object);
+  return hasher.buff;
+}
+class Hasher {
+  buff = "";
+  #context = /* @__PURE__ */ new Map();
+  write(str) {
+    this.buff += str;
+  }
+  dispatch(value) {
+    const type = value === null ? "null" : typeof value;
+    return this[type](value);
+  }
+  object(object) {
+    if (object && typeof object.toJSON === "function") {
+      return this.object(object.toJSON());
+    }
+    const objString = Object.prototype.toString.call(object);
+    let objType = "";
+    const objectLength = objString.length;
+    objType = objectLength < 10 ? "unknown:[" + objString + "]" : objString.slice(8, objectLength - 1);
+    objType = objType.toLowerCase();
+    let objectNumber = null;
+    if ((objectNumber = this.#context.get(object)) === void 0) {
+      this.#context.set(object, this.#context.size);
+    } else {
+      return this.dispatch("[CIRCULAR:" + objectNumber + "]");
+    }
+    if (typeof Buffer !== "undefined" && Buffer.isBuffer && Buffer.isBuffer(object)) {
+      this.write("buffer:");
+      return this.write(object.toString("utf8"));
+    }
+    if (objType !== "object" && objType !== "function" && objType !== "asyncfunction") {
+      if (this[objType]) {
+        this[objType](object);
+      } else {
+        this.unknown(object, objType);
+      }
+    } else {
+      const keys = Object.keys(object).sort();
+      const extraKeys = [];
+      this.write("object:" + (keys.length + extraKeys.length) + ":");
+      const dispatchForKey = (key) => {
+        this.dispatch(key);
+        this.write(":");
+        this.dispatch(object[key]);
+        this.write(",");
+      };
+      for (const key of keys) {
+        dispatchForKey(key);
+      }
+      for (const key of extraKeys) {
+        dispatchForKey(key);
+      }
+    }
+  }
+  array(arr, unordered) {
+    unordered = unordered === void 0 ? false : unordered;
+    this.write("array:" + arr.length + ":");
+    if (!unordered || arr.length <= 1) {
+      for (const entry of arr) {
+        this.dispatch(entry);
+      }
+      return;
+    }
+    const contextAdditions = /* @__PURE__ */ new Map();
+    const entries = arr.map((entry) => {
+      const hasher = new Hasher();
+      hasher.dispatch(entry);
+      for (const [key, value] of hasher.#context) {
+        contextAdditions.set(key, value);
+      }
+      return hasher.toString();
+    });
+    this.#context = contextAdditions;
+    entries.sort();
+    return this.array(entries, false);
+  }
+  date(date) {
+    return this.write("date:" + date.toJSON());
+  }
+  symbol(sym) {
+    return this.write("symbol:" + sym.toString());
+  }
+  unknown(value, type) {
+    this.write(type);
+    if (!value) {
+      return;
+    }
+    this.write(":");
+    if (value && typeof value.entries === "function") {
+      return this.array(
+        [...value.entries()],
+        true
+        /* ordered */
+      );
+    }
+  }
+  error(err) {
+    return this.write("error:" + err.toString());
+  }
+  boolean(bool) {
+    return this.write("bool:" + bool);
+  }
+  string(string) {
+    this.write("string:" + string.length + ":");
+    this.write(string);
+  }
+  function(fn) {
+    this.write("fn:");
+    if (isNativeFunction(fn)) {
+      this.dispatch("[native]");
+    } else {
+      this.dispatch(fn.toString());
+    }
+  }
+  number(number) {
+    return this.write("number:" + number);
+  }
+  null() {
+    return this.write("Null");
+  }
+  undefined() {
+    return this.write("Undefined");
+  }
+  regexp(regex) {
+    return this.write("regex:" + regex.toString());
+  }
+  arraybuffer(arr) {
+    this.write("arraybuffer:");
+    return this.dispatch(new Uint8Array(arr));
+  }
+  url(url) {
+    return this.write("url:" + url.toString());
+  }
+  map(map) {
+    this.write("map:");
+    const arr = [...map];
+    return this.array(arr, false);
+  }
+  set(set) {
+    this.write("set:");
+    const arr = [...set];
+    return this.array(arr, false);
+  }
+  bigint(number) {
+    return this.write("bigint:" + number.toString());
+  }
+}
+for (const type of [
+  "uint8array",
+  "uint8clampedarray",
+  "unt8array",
+  "uint16array",
+  "unt16array",
+  "uint32array",
+  "unt32array",
+  "float32array",
+  "float64array"
+]) {
+  Hasher.prototype[type] = function(arr) {
+    this.write(type + ":");
+    return this.array([...arr], false);
+  };
+}
+const nativeFunc = "[native code] }";
+const nativeFuncLength = nativeFunc.length;
+function isNativeFunction(f) {
+  if (typeof f !== "function") {
+    return false;
+  }
+  return Function.prototype.toString.call(f).slice(-nativeFuncLength) === nativeFunc;
+}
+
+function defaultCacheOptions() {
+  return {
+    name: "_",
+    base: "/cache",
+    swr: true,
+    maxAge: 1
+  };
+}
 function defineCachedFunction(fn, opts = {}) {
-  opts = { ...defaultCacheOptions, ...opts };
+  opts = { ...defaultCacheOptions(), ...opts };
   const pending = {};
   const group = opts.group || "nitro/functions";
   const name = opts.name || fn.name || "_";
@@ -6384,14 +6880,17 @@ function defineCachedFunction(fn, opts = {}) {
   const validate = opts.validate || ((entry) => entry.value !== void 0);
   async function get(key, resolver, shouldInvalidateCache, event) {
     const cacheKey = [opts.base, group, name, key + ".json"].filter(Boolean).join(":").replace(/:\/$/, ":index");
-    let entry = await useStorage().getItem(cacheKey) || {};
+    let entry = await useStorage().getItem(cacheKey).catch((error) => {
+      console.error(`[cache] Cache read error.`, error);
+      useNitroApp().captureError(error, { event, tags: ["cache"] });
+    }) || {};
     if (typeof entry !== "object") {
       entry = {};
       const error = new Error("Malformed data read from cache.");
-      console.error("[nitro] [cache]", error);
+      console.error("[cache]", error);
       useNitroApp().captureError(error, { event, tags: ["cache"] });
     }
-    const ttl = (opts.maxAge ?? opts.maxAge ?? 0) * 1e3;
+    const ttl = (opts.maxAge ?? 0) * 1e3;
     if (ttl) {
       entry.expires = Date.now() + ttl;
     }
@@ -6420,11 +6919,15 @@ function defineCachedFunction(fn, opts = {}) {
         entry.integrity = integrity;
         delete pending[key];
         if (validate(entry) !== false) {
-          const promise = useStorage().setItem(cacheKey, entry).catch((error) => {
-            console.error(`[nitro] [cache] Cache write error.`, error);
+          let setOpts;
+          if (opts.maxAge && !opts.swr) {
+            setOpts = { ttl: opts.maxAge };
+          }
+          const promise = useStorage().setItem(cacheKey, entry, setOpts).catch((error) => {
+            console.error(`[cache] Cache write error.`, error);
             useNitroApp().captureError(error, { event, tags: ["cache"] });
           });
-          if (event && event.waitUntil) {
+          if (event?.waitUntil) {
             event.waitUntil(promise);
           }
         }
@@ -6438,7 +6941,7 @@ function defineCachedFunction(fn, opts = {}) {
     }
     if (opts.swr && validate(entry) !== false) {
       _resolvePromise.catch((error) => {
-        console.error(`[nitro] [cache] SWR handler error.`, error);
+        console.error(`[cache] SWR handler error.`, error);
         useNitroApp().captureError(error, { event, tags: ["cache"] });
       });
       return entry;
@@ -6465,14 +6968,16 @@ function defineCachedFunction(fn, opts = {}) {
     return value;
   };
 }
-const cachedFunction = defineCachedFunction;
+function cachedFunction(fn, opts = {}) {
+  return defineCachedFunction(fn, opts);
+}
 function getKey(...args) {
-  return args.length > 0 ? hash(args, {}) : "";
+  return args.length > 0 ? hash(args) : "";
 }
 function escapeKey(key) {
   return String(key).replace(/\W/g, "");
 }
-function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
+function defineCachedEventHandler(handler, opts = defaultCacheOptions()) {
   const variableHeaderNames = (opts.varies || []).filter(Boolean).map((h) => h.toLowerCase()).sort();
   const _opts = {
     ...opts,
@@ -6482,7 +6987,12 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
         return escapeKey(customKey);
       }
       const _path = event.node.req.originalUrl || event.node.req.url || event.path;
-      const _pathname = escapeKey(decodeURI(parseURL(_path).pathname)).slice(0, 16) || "index";
+      let _pathname;
+      try {
+        _pathname = escapeKey(decodeURI(parseURL(_path).pathname)).slice(0, 16) || "index";
+      } catch {
+        _pathname = "-";
+      }
       const _hashedPath = `${_pathname}.${hash(_path)}`;
       const _headers = variableHeaderNames.map((header) => [header, event.node.req.headers[header]]).map(([name, value]) => `${escapeKey(name)}.${hash(value)}`);
       return [_hashedPath, ..._headers].join(":");
@@ -6509,7 +7019,10 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
     async (incomingEvent) => {
       const variableHeaders = {};
       for (const header of variableHeaderNames) {
-        variableHeaders[header] = incomingEvent.node.req.headers[header];
+        const value = incomingEvent.node.req.headers[header];
+        if (value !== void 0) {
+          variableHeaders[header] = value;
+        }
       }
       const reqProxy = cloneWithProxy(incomingEvent.node.req, {
         headers: variableHeaders
@@ -6558,18 +7071,27 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
             _resSendBody = chunk;
           }
           if (typeof arg2 === "function") {
-            arg2();
+            arg2(void 0);
           }
           if (typeof arg3 === "function") {
             arg3();
           }
-          return this;
+          return true;
         },
         writeHead(statusCode, headers2) {
           this.statusCode = statusCode;
           if (headers2) {
+            if (Array.isArray(headers2) || typeof headers2 === "string") {
+              throw new TypeError("Raw headers  is not supported.");
+            }
             for (const header in headers2) {
-              this.setHeader(header, headers2[header]);
+              const value = headers2[header];
+              if (value !== void 0) {
+                this.setHeader(
+                  header,
+                  value
+                );
+              }
             }
           }
           return this;
@@ -6582,7 +7104,11 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
       event.$fetch = (url, fetchOptions) => fetchWithEvent(event, url, fetchOptions, {
         fetch: globalThis.$fetch
       });
+      event.waitUntil = incomingEvent.waitUntil;
       event.context = incomingEvent.context;
+      event.context.cache = {
+        options: _opts
+      };
       const body = await handler(event) || _resSendBody;
       const headers = event.node.res.getHeaders();
       headers.etag = String(
@@ -6623,7 +7149,9 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
       }
       return handler(event);
     }
-    const response = await _cachedHandler(event);
+    const response = await _cachedHandler(
+      event
+    );
     if (event.node.res.headersSent || event.node.res.writableEnded) {
       return response.body;
     }
@@ -6643,7 +7171,9 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
           splitCookiesString(value)
         );
       } else {
-        event.node.res.setHeader(name, value);
+        if (value !== void 0) {
+          event.node.res.setHeader(name, value);
+        }
       }
     }
     return response.body;
@@ -6668,77 +7198,43 @@ function cloneWithProxy(obj, overrides) {
 }
 const cachedEventHandler = defineCachedEventHandler;
 
-function hasReqHeader(event, name, includes) {
-  const value = getRequestHeader(event, name);
-  return value && typeof value === "string" && value.toLowerCase().includes(includes);
-}
-function isJsonRequest(event) {
-  if (hasReqHeader(event, "accept", "text/html")) {
-    return false;
-  }
-  return hasReqHeader(event, "accept", "application/json") || hasReqHeader(event, "user-agent", "curl/") || hasReqHeader(event, "user-agent", "httpie/") || hasReqHeader(event, "sec-fetch-mode", "cors") || event.path.startsWith("/api/") || event.path.endsWith(".json");
-}
-function normalizeError(error) {
-  const cwd = typeof process.cwd === "function" ? process.cwd() : "/";
-  const stack = (error.stack || "").split("\n").splice(1).filter((line) => line.includes("at ")).map((line) => {
-    const text = line.replace(cwd + "/", "./").replace("webpack:/", "").replace("file://", "").trim();
-    return {
-      text,
-      internal: line.includes("node_modules") && !line.includes(".cache") || line.includes("internal") || line.includes("new Promise")
-    };
-  });
-  const statusCode = error.statusCode || 500;
-  const statusMessage = error.statusMessage ?? (statusCode === 404 ? "Not Found" : "");
-  const message = error.message || error.toString();
-  return {
-    stack,
-    statusCode,
-    statusMessage,
-    message
-  };
-}
-function _captureError(error, type) {
-  console.error(`[nitro] [${type}]`, error);
-  useNitroApp().captureError(error, { tags: [type] });
-}
-function trapUnhandledNodeErrors() {
-  process.on(
-    "unhandledRejection",
-    (error) => _captureError(error, "unhandledRejection")
-  );
-  process.on(
-    "uncaughtException",
-    (error) => _captureError(error, "uncaughtException")
-  );
-}
-function joinHeaders(value) {
-  return Array.isArray(value) ? value.join(", ") : String(value);
-}
-function normalizeFetchResponse(response) {
-  if (!response.headers.has("set-cookie")) {
-    return response;
-  }
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: normalizeCookieHeaders(response.headers)
-  });
-}
-function normalizeCookieHeader(header = "") {
-  return splitCookiesString(joinHeaders(header));
-}
-function normalizeCookieHeaders(headers) {
-  const outgoingHeaders = new Headers();
-  for (const [name, header] of headers) {
-    if (name === "set-cookie") {
-      for (const cookie of normalizeCookieHeader(header)) {
-        outgoingHeaders.append("set-cookie", cookie);
+function defineRenderHandler(render) {
+  const runtimeConfig = useRuntimeConfig();
+  return eventHandler(async (event) => {
+    const nitroApp = useNitroApp();
+    const ctx = { event, render, response: void 0 };
+    await nitroApp.hooks.callHook("render:before", ctx);
+    if (!ctx.response) {
+      if (event.path === `${runtimeConfig.app.baseURL}favicon.ico`) {
+        setResponseHeader(event, "Content-Type", "image/x-icon");
+        return send(
+          event,
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        );
       }
-    } else {
-      outgoingHeaders.set(name, joinHeaders(header));
+      ctx.response = await ctx.render(event);
+      if (!ctx.response) {
+        const _currentStatus = getResponseStatus(event);
+        setResponseStatus(event, _currentStatus === 200 ? 500 : _currentStatus);
+        return send(
+          event,
+          "No response returned from render handler: " + event.path
+        );
+      }
     }
-  }
-  return outgoingHeaders;
+    await nitroApp.hooks.callHook("render:response", ctx.response, ctx);
+    if (ctx.response.headers) {
+      setResponseHeaders(event, ctx.response.headers);
+    }
+    if (ctx.response.statusCode || ctx.response.statusMessage) {
+      setResponseStatus(
+        event,
+        ctx.response.statusCode,
+        ctx.response.statusMessage
+      );
+    }
+    return ctx.response.body;
+  });
 }
 
 const config$1 = useRuntimeConfig();
@@ -6799,97 +7295,9 @@ function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
 
-const script$1 = `
-if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
-  Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
-    value: {},
-    enumerable: false,
-    configurable: true,
-  })
-}
-window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
-`;
-
-const _IewG2GrHmh = (function(nitro) {
-  nitro.hooks.hook("render:html", (htmlContext) => {
-    htmlContext.head.push(`<script>${script$1}<\/script>`);
-  });
-});
-
-const rootDir = "/home/developer/Documents/projects/delitris-nuxtjs";
-
-const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _n3O99JdZZW = (nitroApp) => {
-  const handler = nitroApp.h3App.handler;
-  nitroApp.h3App.handler = (event) => {
-    return asyncContext.callAsync({ logs: [], event }, () => handler(event));
-  };
-  onConsoleLog((_log) => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    const stack = getStack();
-    if (stack.includes("runtime/vite-node.mjs")) {
-      return;
-    }
-    const log = {
-      ..._log,
-      // Pass along filename to allow the client to display more info about where log comes from
-      filename: extractFilenameFromStack(stack),
-      // Clean up file names in stack trace
-      stack: normalizeFilenames(stack)
-    };
-    ctx.logs.push(log);
-  });
-  nitroApp.hooks.hook("afterResponse", () => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    return nitroApp.hooks.callHook("dev:ssr-logs", { logs: ctx.logs, path: ctx.event.path });
-  });
-  nitroApp.hooks.hook("render:html", (htmlContext) => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    try {
-      htmlContext.bodyAppend.unshift(`<script type="application/json" id="__NUXT_LOGS__">${stringify(ctx.logs, ctx.event.context._payloadReducers)}<\/script>`);
-    } catch (e) {
-      console.warn("[nuxt] Failed to stringify dev server logs. You can define your own reducer/reviver for rich types following the instructions in https://nuxt.com/docs/api/composables/use-nuxt-app#payload.", e);
-    }
-  });
-};
-const EXCLUDE_TRACE_RE = /^.*at.*(\/node_modules\/(.*\/)?(nuxt|nuxt-nightly|nuxt-edge|nuxt3|consola|@vue)\/.*|core\/runtime\/nitro.*)$\n?/gm;
-function getStack() {
-  const stack = new Error();
-  Error.captureStackTrace(stack);
-  return stack.stack?.replace(EXCLUDE_TRACE_RE, "").replace(/^Error.*\n/, "") || "";
-}
-const FILENAME_RE = /at.*\(([^:)]+)[):]/;
-const FILENAME_RE_GLOBAL = /at.*\(([^)]+)\)/g;
-function extractFilenameFromStack(stacktrace) {
-  return stacktrace.match(FILENAME_RE)?.[1].replace(withTrailingSlash(rootDir), "");
-}
-function normalizeFilenames(stacktrace) {
-  return stacktrace.replace(FILENAME_RE_GLOBAL, (match, filename) => match.replace(filename, filename.replace("file:///", "/").replace(/:.*$/, "")));
-}
-function onConsoleLog(callback) {
-  consola.addReporter({
-    log(logObj) {
-      callback(logObj);
-    }
-  });
-  consola.wrapConsole();
-}
-
-const script = "\"use strict\";(()=>{const a=window,e=document.documentElement,c=window.localStorage,d=[\"dark\",\"light\"],n=c&&c.getItem&&c.getItem(\"nuxt-color-mode\")||\"system\";let l=n===\"system\"?f():n;const i=e.getAttribute(\"data-color-mode-forced\");i&&(l=i),r(l),a[\"__NUXT_COLOR_MODE__\"]={preference:n,value:l,getColorScheme:f,addColorScheme:r,removeColorScheme:u};function r(o){const t=\"\"+o+\"\",s=\"\";e.classList?e.classList.add(t):e.className+=\" \"+t,s&&e.setAttribute(\"data-\"+s,o)}function u(o){const t=\"\"+o+\"\",s=\"\";e.classList?e.classList.remove(t):e.className=e.className.replace(new RegExp(t,\"g\"),\"\"),s&&e.removeAttribute(\"data-\"+s)}function m(o){return a.matchMedia(\"(prefers-color-scheme\"+o+\")\")}function f(){if(a.matchMedia&&m(\"\").media!==\"not all\"){for(const o of d)if(m(\":\"+o).matches)return o}return\"light\"}})();\n";
-
-const _OiYrEA4UFW = (function(nitro) {
-  nitro.hooks.hook("render:html", (htmlContext) => {
-    htmlContext.head.push(`<script>${script}<\/script>`);
-  });
+getContext("nitro-app", {
+  asyncContext: false,
+  AsyncLocalStorage: void 0
 });
 
 const scheduledTasks = false;
@@ -6929,36 +7337,6 @@ async function runTask(name, {
   }
 }
 
-function defineRenderHandler(handler) {
-  return eventHandler(async (event) => {
-    if (event.path.endsWith("/favicon.ico")) {
-      setResponseHeader(event, "Content-Type", "image/x-icon");
-      return send(
-        event,
-        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-      );
-    }
-    const response = await handler(event);
-    if (!response) {
-      const _currentStatus = getResponseStatus(event);
-      setResponseStatus(event, _currentStatus === 200 ? 500 : _currentStatus);
-      return send(
-        event,
-        "No response returned from render handler: " + event.path
-      );
-    }
-    const nitroApp = useNitroApp();
-    await nitroApp.hooks.callHook("render:response", response, { event });
-    if (response.headers) {
-      setResponseHeaders(event, response.headers);
-    }
-    if (response.statusCode || response.statusMessage) {
-      setResponseStatus(event, response.statusCode, response.statusMessage);
-    }
-    return response.body;
-  });
-}
-
 function buildAssetsDir() {
   return useRuntimeConfig().app.buildAssetsDir;
 }
@@ -6971,268 +7349,6 @@ function publicAssetsURL(...path) {
   return path.length ? joinRelativeURL(publicBase, ...path) : publicBase;
 }
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var theme$6 = function theme(_ref) {
-  var dt = _ref.dt;
-  return "\n.p-speeddial {\n    position: static;\n    display: flex;\n    gap: ".concat(dt('speeddial.gap'), ";\n}\n\n.p-speeddial-button {\n    z-index: 1;\n}\n\n.p-speeddial-button.p-speeddial-rotate {\n    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background ").concat(dt('speeddial.transition.duration'), ", color ").concat(dt('speeddial.transition.duration'), ", border-color ").concat(dt('speeddial.transition.duration'), ",\n    box-shadow ").concat(dt('speeddial.transition.duration'), ", outline-color ").concat(dt('speeddial.transition.duration'), ";\n    will-change: transform;\n}\n\n.p-speeddial-list {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    transition: top 0s linear ").concat(dt('speeddial.transition.duration'), ";\n    pointer-events: none;\n    outline: 0 none;\n    z-index: 2;\n    gap: ").concat(dt('speeddial.gap'), ";\n}\n\n.p-speeddial-item {\n    transform: scale(0);\n    opacity: 0;\n    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, opacity 0.8s;\n    will-change: transform;\n}\n\n.p-speeddial-circle .p-speeddial-item,\n.p-speeddial-semi-circle .p-speeddial-item,\n.p-speeddial-quarter-circle .p-speeddial-item {\n    position: absolute;\n}\n\n.p-speeddial-mask {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    background: ").concat(dt('mask.background'), ";\n    border-radius: 6px;\n    transition: opacity 150ms;\n}\n\n.p-speeddial-mask-visible {\n    pointer-events: none;\n    opacity: 1;\n    transition: opacity 150ms;\n}\n\n.p-speeddial-open .p-speeddial-list {\n    pointer-events: auto;\n}\n\n.p-speeddial-open .p-speeddial-item {\n    transform: scale(1);\n    opacity: 1;\n}\n\n.p-speeddial-open .p-speeddial-rotate {\n    transform: rotate(45deg);\n}\n");
-};
-
-/* Direction */
-var inlineStyles$1 = {
-  root: function root(_ref2) {
-    var props = _ref2.props;
-    return {
-      alignItems: (props.direction === 'up' || props.direction === 'down') && 'center',
-      justifyContent: (props.direction === 'left' || props.direction === 'right') && 'center',
-      flexDirection: props.direction === 'up' ? 'column-reverse' : props.direction === 'down' ? 'column' : props.direction === 'left' ? 'row-reverse' : props.direction === 'right' ? 'row' : null
-    };
-  },
-  list: function list(_ref3) {
-    var props = _ref3.props;
-    return {
-      flexDirection: props.direction === 'up' ? 'column-reverse' : props.direction === 'down' ? 'column' : props.direction === 'left' ? 'row-reverse' : props.direction === 'right' ? 'row' : null
-    };
-  }
-};
-var classes$6 = {
-  root: function root(_ref4) {
-    var instance = _ref4.instance,
-      props = _ref4.props;
-    return ["p-speeddial p-component p-speeddial-".concat(props.type), _defineProperty(_defineProperty(_defineProperty({}, "p-speeddial-direction-".concat(props.direction), props.type !== 'circle'), 'p-speeddial-open', instance.d_visible), 'p-disabled', props.disabled)];
-  },
-  pcButton: function pcButton(_ref6) {
-    var props = _ref6.props;
-    return ['p-speeddial-button', {
-      'p-speeddial-rotate': props.rotateAnimation && !props.hideIcon
-    }];
-  },
-  list: 'p-speeddial-list',
-  item: 'p-speeddial-item',
-  action: 'p-speeddial-action',
-  actionIcon: 'p-speeddial-action-icon',
-  mask: function mask(_ref7) {
-    var instance = _ref7.instance;
-    return ['p-speeddial-mask', {
-      'p-speeddial-mask-visible': instance.d_visible
-    }];
-  }
-};
-var SpeedDialStyle = BaseStyle.extend({
-  name: 'speeddial',
-  theme: theme$6,
-  classes: classes$6,
-  inlineStyles: inlineStyles$1
-});
-
-var theme$5 = function theme(_ref) {
-  var dt = _ref.dt;
-  return "\n.p-tag {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    background: ".concat(dt('tag.primary.background'), ";\n    color: ").concat(dt('tag.primary.color'), ";\n    font-size: ").concat(dt('tag.font.size'), ";\n    font-weight: ").concat(dt('tag.font.weight'), ";\n    padding: ").concat(dt('tag.padding'), ";\n    border-radius: ").concat(dt('tag.border.radius'), ";\n    gap: ").concat(dt('tag.gap'), ";\n}\n\n.p-tag-icon {\n    font-size: ").concat(dt('tag.icon.size'), ";\n    width: ").concat(dt('tag.icon.size'), ";\n    height:").concat(dt('tag.icon.size'), ";\n}\n\n.p-tag-rounded {\n    border-radius: ").concat(dt('tag.rounded.border.radius'), ";\n}\n\n.p-tag-success {\n    background: ").concat(dt('tag.success.background'), ";\n    color: ").concat(dt('tag.success.color'), ";\n}\n\n.p-tag-info {\n    background: ").concat(dt('tag.info.background'), ";\n    color: ").concat(dt('tag.info.color'), ";\n}\n\n.p-tag-warn {\n    background: ").concat(dt('tag.warn.background'), ";\n    color: ").concat(dt('tag.warn.color'), ";\n}\n\n.p-tag-danger {\n    background: ").concat(dt('tag.danger.background'), ";\n    color: ").concat(dt('tag.danger.color'), ";\n}\n\n.p-tag-secondary {\n    background: ").concat(dt('tag.secondary.background'), ";\n    color: ").concat(dt('tag.secondary.color'), ";\n}\n\n.p-tag-contrast {\n    background: ").concat(dt('tag.contrast.background'), ";\n    color: ").concat(dt('tag.contrast.color'), ";\n}\n");
-};
-var classes$5 = {
-  root: function root(_ref2) {
-    var props = _ref2.props;
-    return ['p-tag p-component', {
-      'p-tag-info': props.severity === 'info',
-      'p-tag-success': props.severity === 'success',
-      'p-tag-warn': props.severity === 'warn',
-      'p-tag-danger': props.severity === 'danger',
-      'p-tag-secondary': props.severity === 'secondary',
-      'p-tag-contrast': props.severity === 'contrast',
-      'p-tag-rounded': props.rounded
-    }];
-  },
-  icon: 'p-tag-icon',
-  label: 'p-tag-label'
-};
-var TagStyle = BaseStyle.extend({
-  name: 'tag',
-  theme: theme$5,
-  classes: classes$5
-});
-
-var theme$4 = function theme(_ref) {
-  var dt = _ref.dt;
-  return "\n.p-carousel {\n    display: flex;\n    flex-direction: column;\n}\n\n.p-carousel-content-container {\n    display: flex;\n    flex-direction: column;\n    overflow: auto;\n}\n\n.p-carousel-content {\n    display: flex;\n    flex-direction: row;\n    gap: ".concat(dt('carousel.content.gap'), ";\n}\n\n.p-carousel-viewport {\n    overflow: hidden;\n    width: 100%;\n}\n\n.p-carousel-item-list {\n    display: flex;\n    flex-direction: row;\n}\n\n.p-carousel-prev-button,\n.p-carousel-next-button {\n    align-self: center;\n}\n\n.p-carousel-indicator-list {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    flex-wrap: wrap;\n    padding: ").concat(dt('carousel.indicator.list.padding'), ";\n    gap: ").concat(dt('carousel.indicator.list.gap'), ";\n    margin: 0;\n    list-style: none;\n}\n\n.p-carousel-indicator-button {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: ").concat(dt('carousel.indicator.background'), ";\n    width: ").concat(dt('carousel.indicator.width'), ";\n    height: ").concat(dt('carousel.indicator.height'), ";\n    border: 0 none;\n    transition: background ").concat(dt('carousel.transition.duration'), ", color ").concat(dt('carousel.transition.duration'), ", outline-color ").concat(dt('carousel.transition.duration'), ", box-shadow ").concat(dt('carousel.transition.duration'), ";\n    outline-color: transparent;\n    border-radius: ").concat(dt('carousel.indicator.border.radius'), ";\n    padding: 0;\n    margin: 0;\n    user-select: none;\n    cursor: pointer;\n}\n\n.p-carousel-indicator-button:focus-visible {\n    box-shadow: ").concat(dt('carousel.indicator.focus.ring.shadow'), ";\n    outline: ").concat(dt('carousel.indicator.focus.ring.width'), " ").concat(dt('carousel.indicator.focus.ring.style'), " ").concat(dt('carousel.indicator.focus.ring.color'), ";\n    outline-offset: ").concat(dt('carousel.indicator.focus.ring.offset'), ";\n}\n\n.p-carousel-indicator-button:hover {\n    background: ").concat(dt('carousel.indicator.hover.background'), ";\n}\n\n.p-carousel-indicator-active .p-carousel-indicator-button {\n    background: ").concat(dt('carousel.indicator.active.background'), ";\n}\n\n.p-carousel-vertical .p-carousel-content {\n    flex-direction: column;\n}\n\n.p-carousel-vertical .p-carousel-item-list {\n    flex-direction: column;\n    height: 100%;\n}\n\n.p-items-hidden .p-carousel-item {\n    visibility: hidden;\n}\n\n.p-items-hidden .p-carousel-item.p-carousel-item-active {\n    visibility: visible;\n}\n");
-};
-var classes$4 = {
-  root: function root(_ref2) {
-    var instance = _ref2.instance;
-    return ['p-carousel p-component', {
-      'p-carousel-vertical': instance.isVertical(),
-      'p-carousel-horizontal': !instance.isVertical()
-    }];
-  },
-  header: 'p-carousel-header',
-  contentContainer: 'p-carousel-content-container',
-  content: 'p-carousel-content',
-  pcPrevButton: function pcPrevButton(_ref3) {
-    var instance = _ref3.instance;
-    return ['p-carousel-prev-button', {
-      'p-disabled': instance.backwardIsDisabled
-    }];
-  },
-  viewport: 'p-carousel-viewport',
-  itemList: 'p-carousel-item-list',
-  itemClone: function itemClone(_ref4) {
-    var index = _ref4.index,
-      value = _ref4.value,
-      totalShiftedItems = _ref4.totalShiftedItems,
-      d_numVisible = _ref4.d_numVisible;
-    return ['p-carousel-item p-carousel-item-clone', {
-      'p-carousel-item-active': totalShiftedItems * -1 === value.length + d_numVisible,
-      'p-carousel-item-start': index === 0,
-      'p-carousel-item-end': value.slice(-1 * d_numVisible).length - 1 === index
-    }];
-  },
-  item: function item(_ref5) {
-    var instance = _ref5.instance,
-      index = _ref5.index;
-    return ['p-carousel-item', {
-      'p-carousel-item-active': instance.firstIndex() <= index && instance.lastIndex() >= index,
-      'p-carousel-item-start': instance.firstIndex() === index,
-      'p-carousel-item-end': instance.lastIndex() === index
-    }];
-  },
-  pcNextButton: function pcNextButton(_ref6) {
-    var instance = _ref6.instance;
-    return ['p-carousel-next-button', {
-      'p-disabled': instance.forwardIsDisabled
-    }];
-  },
-  indicatorList: 'p-carousel-indicator-list',
-  indicator: function indicator(_ref7) {
-    var instance = _ref7.instance,
-      index = _ref7.index;
-    return ['p-carousel-indicator', {
-      'p-carousel-indicator-active': instance.d_page === index
-    }];
-  },
-  indicatorButton: 'p-carousel-indicator-button',
-  footer: 'p-carousel-footer'
-};
-var CarouselStyle = BaseStyle.extend({
-  name: 'carousel',
-  theme: theme$4,
-  classes: classes$4
-});
-
-var theme$3 = function theme(_ref) {
-  var dt = _ref.dt;
-  return "\n.p-badge {\n    display: inline-flex;\n    border-radius: ".concat(dt('badge.border.radius'), ";\n    align-items: center;\n    justify-content: center;\n    padding: ").concat(dt('badge.padding'), ";\n    background: ").concat(dt('badge.primary.background'), ";\n    color: ").concat(dt('badge.primary.color'), ";\n    font-size: ").concat(dt('badge.font.size'), ";\n    font-weight: ").concat(dt('badge.font.weight'), ";\n    min-width: ").concat(dt('badge.min.width'), ";\n    height: ").concat(dt('badge.height'), ";\n}\n\n.p-badge-dot {\n    width: ").concat(dt('badge.dot.size'), ";\n    min-width: ").concat(dt('badge.dot.size'), ";\n    height: ").concat(dt('badge.dot.size'), ";\n    border-radius: 50%;\n    padding: 0;\n}\n\n.p-badge-circle {\n    padding: 0;\n    border-radius: 50%;\n}\n\n.p-badge-secondary {\n    background: ").concat(dt('badge.secondary.background'), ";\n    color: ").concat(dt('badge.secondary.color'), ";\n}\n\n.p-badge-success {\n    background: ").concat(dt('badge.success.background'), ";\n    color: ").concat(dt('badge.success.color'), ";\n}\n\n.p-badge-info {\n    background: ").concat(dt('badge.info.background'), ";\n    color: ").concat(dt('badge.info.color'), ";\n}\n\n.p-badge-warn {\n    background: ").concat(dt('badge.warn.background'), ";\n    color: ").concat(dt('badge.warn.color'), ";\n}\n\n.p-badge-danger {\n    background: ").concat(dt('badge.danger.background'), ";\n    color: ").concat(dt('badge.danger.color'), ";\n}\n\n.p-badge-contrast {\n    background: ").concat(dt('badge.contrast.background'), ";\n    color: ").concat(dt('badge.contrast.color'), ";\n}\n\n.p-badge-sm {\n    font-size: ").concat(dt('badge.sm.font.size'), ";\n    min-width: ").concat(dt('badge.sm.min.width'), ";\n    height: ").concat(dt('badge.sm.height'), ";\n}\n\n.p-badge-lg {\n    font-size: ").concat(dt('badge.lg.font.size'), ";\n    min-width: ").concat(dt('badge.lg.min.width'), ";\n    height: ").concat(dt('badge.lg.height'), ";\n}\n\n.p-badge-xl {\n    font-size: ").concat(dt('badge.xl.font.size'), ";\n    min-width: ").concat(dt('badge.xl.min.width'), ";\n    height: ").concat(dt('badge.xl.height'), ";\n}\n");
-};
-var classes$3 = {
-  root: function root(_ref2) {
-    var props = _ref2.props,
-      instance = _ref2.instance;
-    return ['p-badge p-component', {
-      'p-badge-circle': isNotEmpty(props.value) && String(props.value).length === 1,
-      'p-badge-dot': isEmpty(props.value) && !instance.$slots["default"],
-      'p-badge-sm': props.size === 'small',
-      'p-badge-lg': props.size === 'large',
-      'p-badge-xl': props.size === 'xlarge',
-      'p-badge-info': props.severity === 'info',
-      'p-badge-success': props.severity === 'success',
-      'p-badge-warn': props.severity === 'warn',
-      'p-badge-danger': props.severity === 'danger',
-      'p-badge-secondary': props.severity === 'secondary',
-      'p-badge-contrast': props.severity === 'contrast'
-    }];
-  }
-};
-var BadgeStyle = BaseStyle.extend({
-  name: 'badge',
-  theme: theme$3,
-  classes: classes$3
-});
-
-var theme$2 = function theme(_ref) {
-  var dt = _ref.dt;
-  return "\n.p-avatar {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    width: ".concat(dt('avatar.width'), ";\n    height: ").concat(dt('avatar.height'), ";\n    font-size: ").concat(dt('avatar.font.size'), ";\n    background: ").concat(dt('avatar.background'), ";\n    border-radius: ").concat(dt('avatar.border.radius'), ";\n}\n\n.p-avatar-image {\n    background: transparent;\n}\n\n.p-avatar-circle {\n    border-radius: 50%;\n}\n\n.p-avatar-circle img {\n    border-radius: 50%;\n}\n\n.p-avatar-icon {\n    font-size: ").concat(dt('avatar.font.size'), ";\n}\n\n.p-avatar img {\n    width: 100%;\n    height: 100%;\n}\n\n.p-avatar-lg {\n    width: ").concat(dt('avatar.lg.width'), ";\n    height: ").concat(dt('avatar.lg.width'), ";\n    font-size: ").concat(dt('avatar.lg.font.size'), ";\n}\n\n.p-avatar-lg .p-avatar-icon {\n    font-size: ").concat(dt('avatar.lg.font.size'), ";\n}\n\n.p-avatar-xl {\n    width: ").concat(dt('avatar.xl.width'), ";\n    height: ").concat(dt('avatar.xl.width'), ";\n    font-size: ").concat(dt('avatar.xl.font.size'), ";\n}\n\n.p-avatar-xl .p-avatar-icon {\n    font-size: ").concat(dt('avatar.xl.font.size'), ";\n}\n\n.p-avatar-group {\n    display: flex;\n    align-items: center;\n}\n\n.p-avatar-group .p-avatar + .p-avatar {\n    margin-left: ").concat(dt('avatar.group.offset'), ";\n}\n\n.p-avatar-group .p-avatar {\n    border: 2px solid ").concat(dt('avatar.group.border.color'), ";\n}\n");
-};
-var classes$2 = {
-  root: function root(_ref2) {
-    var props = _ref2.props;
-    return ['p-avatar p-component', {
-      'p-avatar-image': props.image != null,
-      'p-avatar-circle': props.shape === 'circle',
-      'p-avatar-lg': props.size === 'large',
-      'p-avatar-xl': props.size === 'xlarge'
-    }];
-  },
-  label: 'p-avatar-label',
-  icon: 'p-avatar-icon'
-};
-var AvatarStyle = BaseStyle.extend({
-  name: 'avatar',
-  theme: theme$2,
-  classes: classes$2
-});
-
-var theme$1 = function theme(_ref) {
-  var dt = _ref.dt;
-  return "\n.p-menubar {\n    display: flex;\n    align-items: center;\n    background: ".concat(dt('menubar.background'), ";\n    border: 1px solid ").concat(dt('menubar.border.color'), ";\n    border-radius: ").concat(dt('menubar.border.radius'), ";\n    color: ").concat(dt('menubar.color'), ";\n    padding: ").concat(dt('menubar.padding'), ";\n    gap: ").concat(dt('menubar.gap'), ";\n}\n\n.p-menubar-start,\n.p-megamenu-end {\n    display: flex;\n    align-items: center;\n}\n\n.p-menubar-root-list,\n.p-menubar-submenu {\n    display: flex;\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    outline: 0 none;\n}\n\n.p-menubar-root-list {\n    align-items: center;\n    flex-wrap: wrap;\n    gap: ").concat(dt('menubar.gap'), ";\n}\n\n.p-menubar-root-list > .p-menubar-item > .p-menubar-item-content {\n    border-radius: ").concat(dt('menubar.base.item.border.radius'), ";\n}\n\n.p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link {\n    padding: ").concat(dt('menubar.base.item.padding'), ";\n}\n\n.p-menubar-item-content {\n    transition: background ").concat(dt('menubar.transition.duration'), ", color ").concat(dt('menubar.transition.duration'), ";\n    border-radius: ").concat(dt('menubar.item.border.radius'), ";\n    color: ").concat(dt('menubar.item.color'), ";\n}\n\n.p-menubar-item-link {\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    text-decoration: none;\n    overflow: hidden;\n    position: relative;\n    color: inherit;\n    padding: ").concat(dt('menubar.item.padding'), ";\n    gap: ").concat(dt('menubar.item.gap'), ";\n    user-select: none;\n    outline: 0 none;\n}\n\n.p-menubar-item-label {\n    line-height: 1;\n}\n\n.p-menubar-item-icon {\n    color: ").concat(dt('menubar.item.icon.color'), ";\n}\n\n.p-menubar-submenu-icon {\n    color: ").concat(dt('menubar.submenu.icon.color'), ";\n    margin-left: auto;\n    font-size: ").concat(dt('menubar.submenu.icon.size'), ";\n    width: ").concat(dt('menubar.submenu.icon.size'), ";\n    height: ").concat(dt('menubar.submenu.icon.size'), ";\n}\n\n.p-menubar-item.p-focus > .p-menubar-item-content {\n    color: ").concat(dt('menubar.item.focus.color'), ";\n    background: ").concat(dt('menubar.item.focus.background'), ";\n}\n\n.p-menubar-item.p-focus > .p-menubar-item-content .p-menubar-item-icon {\n    color: ").concat(dt('menubar.item.icon.focus.color'), ";\n}\n\n.p-menubar-item.p-focus > .p-menubar-item-content .p-menubar-submenu-icon {\n    color: ").concat(dt('menubar.submenu.icon.focus.color'), ";\n}\n\n.p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover {\n    color: ").concat(dt('menubar.item.focus.color'), ";\n    background: ").concat(dt('menubar.item.focus.background'), ";\n}\n\n.p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover .p-menubar-item-icon {\n    color: ").concat(dt('menubar.item.icon.focus.color'), ";\n}\n\n.p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover .p-menubar-submenu-icon {\n    color: ").concat(dt('menubar.submenu.icon.focus.color'), ";\n}\n\n.p-menubar-item-active > .p-menubar-item-content {\n    color: ").concat(dt('menubar.item.active.color'), ";\n    background: ").concat(dt('menubar.item.active.background'), ";\n}\n\n.p-menubar-item-active > .p-menubar-item-content .p-menubar-item-icon {\n    color: ").concat(dt('menubar.item.icon.active.color'), ";\n}\n\n.p-menubar-item-active > .p-menubar-item-content .p-menubar-submenu-icon {\n    color: ").concat(dt('menubar.submenu.icon.active.color'), ";\n}\n\n.p-menubar-submenu {\n    display: none;\n    position: absolute;\n    min-width: 12.5rem;\n    z-index: 1;\n    background: ").concat(dt('menubar.submenu.background'), ";\n    border: 1px solid ").concat(dt('menubar.submenu.border.color'), ";\n    border-radius: ").concat(dt('menubar.border.radius'), ";\n    box-shadow: ").concat(dt('menubar.submenu.shadow'), ";\n    color: ").concat(dt('menubar.submenu.color'), ";\n    flex-direction: column;\n    padding: ").concat(dt('menubar.submenu.padding'), ";\n    gap: ").concat(dt('menubar.submenu.gap'), ";\n}\n\n.p-menubar-submenu .p-menubar-separator {\n    border-top: 1px solid ").concat(dt('menubar.separator.border.color'), ";\n}\n\n.p-menubar-submenu .p-menubar-item {\n    position: relative;\n}\n\n .p-menubar-submenu > .p-menubar-item-active > .p-menubar-submenu {\n    display: block;\n    left: 100%;\n    top: 0;\n}\n\n.p-menubar-end {\n    margin-left: auto;\n    align-self: center;\n}\n\n.p-menubar-button {\n    display: none;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    width: ").concat(dt('menubar.mobile.button.size'), ";\n    height: ").concat(dt('menubar.mobile.button.size'), ";\n    position: relative;\n    color: ").concat(dt('menubar.mobile.button.color'), ";\n    border: 0 none;\n    background: transparent;\n    border-radius: ").concat(dt('menubar.mobile.button.border.radius'), ";\n    transition: background ").concat(dt('menubar.transition.duration'), ", color ").concat(dt('menubar.transition.duration'), ", outline-color ").concat(dt('menubar.transition.duration'), ";\n    outline-color: transparent;\n}\n\n.p-menubar-button:hover {\n    color: ").concat(dt('menubar.mobile.button.hover.color'), ";\n    background: ").concat(dt('menubar.mobile.button.hover.background'), ";\n}\n\n.p-menubar-button:focus-visible {\n    box-shadow: ").concat(dt('menubar.mobile.button.focus.ring.shadow'), ";\n    outline: ").concat(dt('menubar.mobile.button.focus.ring.width'), " ").concat(dt('menubar.mobile.button.focus.ring.style'), " ").concat(dt('menubar.mobile.button.focus.ring.color'), ";\n    outline-offset: ").concat(dt('menubar.mobile.button.focus.ring.offset'), ";\n}\n\n.p-menubar-mobile {\n    position: relative;\n}\n\n.p-menubar-mobile .p-menubar-button {\n    display: flex;\n}\n\n.p-menubar-mobile .p-menubar-root-list {\n    position: absolute;\n    display: none;\n    width: 100%;\n    padding: ").concat(dt('menubar.submenu.padding'), ";\n    background: ").concat(dt('menubar.submenu.background'), ";\n    border: 1px solid ").concat(dt('menubar.submenu.border.color'), ";\n    box-shadow: ").concat(dt('menubar.submenu.shadow'), ";\n}\n\n.p-menubar-mobile .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content {\n    border-radius: ").concat(dt('menubar.item.border.radius'), ";\n}\n\n.p-menubar-mobile .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link {\n    padding: ").concat(dt('menubar.item.padding'), ";\n}\n\n.p-menubar-mobile-active .p-menubar-root-list {\n    display: flex;\n    flex-direction: column;\n    top: 100%;\n    left: 0;\n    z-index: 1;\n}\n\n.p-menubar-mobile .p-menubar-root-list .p-menubar-item {\n    width: 100%;\n    position: static;\n}\n\n.p-menubar-mobile .p-menubar-root-list .p-menubar-separator {\n    border-top: 1px solid ").concat(dt('menubar.separator.border.color'), ";\n}\n\n.p-menubar-mobile .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content .p-menubar-submenu-icon {\n    margin-left: auto;\n    transition: transform 0.2s;\n}\n\n.p-menubar-mobile .p-menubar-root-list > .p-menubar-item-active > .p-menubar-item-content .p-menubar-submenu-icon {\n    transform: rotate(-180deg);\n}\n\n.p-menubar-mobile .p-menubar-submenu .p-menubar-submenu-icon {\n    transition: transform 0.2s;\n    transform: rotate(90deg);\n}\n\n.p-menubar-mobile  .p-menubar-item-active > .p-menubar-item-content .p-menubar-submenu-icon {\n    transform: rotate(-90deg);\n}\n\n.p-menubar-mobile .p-menubar-submenu {\n    width: 100%;\n    position: static;\n    box-shadow: none;\n    border: 0 none;\n    padding-left: ").concat(dt('menubar.submenu.mobile.indent'), ";\n}\n");
-};
-var inlineStyles = {
-  submenu: function submenu(_ref2) {
-    var instance = _ref2.instance,
-      processedItem = _ref2.processedItem;
-    return {
-      display: instance.isItemActive(processedItem) ? 'flex' : 'none'
-    };
-  }
-};
-var classes$1 = {
-  root: function root(_ref3) {
-    var instance = _ref3.instance;
-    return ['p-menubar p-component', {
-      'p-menubar-mobile': instance.queryMatches,
-      'p-menubar-mobile-active': instance.mobileActive
-    }];
-  },
-  start: 'p-menubar-start',
-  button: 'p-menubar-button',
-  rootList: 'p-menubar-root-list',
-  item: function item(_ref4) {
-    var instance = _ref4.instance,
-      processedItem = _ref4.processedItem;
-    return ['p-menubar-item', {
-      'p-menubar-item-active': instance.isItemActive(processedItem),
-      'p-focus': instance.isItemFocused(processedItem),
-      'p-disabled': instance.isItemDisabled(processedItem)
-    }];
-  },
-  itemContent: 'p-menubar-item-content',
-  itemLink: 'p-menubar-item-link',
-  itemIcon: 'p-menubar-item-icon',
-  itemLabel: 'p-menubar-item-label',
-  submenuIcon: 'p-menubar-submenu-icon',
-  submenu: 'p-menubar-submenu',
-  separator: 'p-menubar-separator',
-  end: 'p-menubar-end'
-};
-var MenubarStyle = BaseStyle.extend({
-  name: 'menubar',
-  theme: theme$1,
-  classes: classes$1,
-  inlineStyles: inlineStyles
-});
-
-var theme = function theme(_ref) {
-  var dt = _ref.dt;
-  return "\n.p-ink {\n    display: block;\n    position: absolute;\n    background: ".concat(dt('ripple.background'), ";\n    border-radius: 100%;\n    transform: scale(0);\n    pointer-events: none;\n}\n\n.p-ink-active {\n    animation: ripple 0.4s linear;\n}\n\n@keyframes ripple {\n    100% {\n        opacity: 0;\n        transform: scale(2.5);\n    }\n}\n");
-};
-var classes = {
-  root: 'p-ink'
-};
-var RippleStyle = BaseStyle.extend({
-  name: 'ripple-directive',
-  theme: theme,
-  classes: classes
-});
-
 const runtimeConfig = useRuntimeConfig();
 const config = runtimeConfig?.public?.primevue ?? {};
 const { options = {} } = config;
@@ -7243,18 +7359,18 @@ const styleProps = {
 };
 const styles$2 = [
   ,
-  BaseStyle && BaseStyle.getStyleSheet ? BaseStyle.getStyleSheet(undefined, styleProps) : '',SpeedDialStyle && SpeedDialStyle.getStyleSheet ? SpeedDialStyle.getStyleSheet(undefined, styleProps) : '',TagStyle && TagStyle.getStyleSheet ? TagStyle.getStyleSheet(undefined, styleProps) : '',CarouselStyle && CarouselStyle.getStyleSheet ? CarouselStyle.getStyleSheet(undefined, styleProps) : '',BadgeStyle && BadgeStyle.getStyleSheet ? BadgeStyle.getStyleSheet(undefined, styleProps) : '',AvatarStyle && AvatarStyle.getStyleSheet ? AvatarStyle.getStyleSheet(undefined, styleProps) : '',MenubarStyle && MenubarStyle.getStyleSheet ? MenubarStyle.getStyleSheet(undefined, styleProps) : '',RippleStyle && RippleStyle.getStyleSheet ? RippleStyle.getStyleSheet(undefined, styleProps) : ''
+  BaseStyle && BaseStyle.getStyleSheet ? BaseStyle.getStyleSheet(undefined, styleProps) : ''
 ].join('');
 
 Theme.setTheme(options?.theme);
 
 const themes = [
     BaseStyle && BaseStyle.getCommonThemeStyleSheet ? BaseStyle.getCommonThemeStyleSheet(undefined, styleProps) : '',
-    BaseStyle && BaseStyle.getThemeStyleSheet ? BaseStyle.getThemeStyleSheet(undefined, styleProps) : '',SpeedDialStyle && SpeedDialStyle.getThemeStyleSheet ? SpeedDialStyle.getThemeStyleSheet(undefined, styleProps) : '',TagStyle && TagStyle.getThemeStyleSheet ? TagStyle.getThemeStyleSheet(undefined, styleProps) : '',CarouselStyle && CarouselStyle.getThemeStyleSheet ? CarouselStyle.getThemeStyleSheet(undefined, styleProps) : '',BadgeStyle && BadgeStyle.getThemeStyleSheet ? BadgeStyle.getThemeStyleSheet(undefined, styleProps) : '',AvatarStyle && AvatarStyle.getThemeStyleSheet ? AvatarStyle.getThemeStyleSheet(undefined, styleProps) : '',MenubarStyle && MenubarStyle.getThemeStyleSheet ? MenubarStyle.getThemeStyleSheet(undefined, styleProps) : '',RippleStyle && RippleStyle.getThemeStyleSheet ? RippleStyle.getThemeStyleSheet(undefined, styleProps) : ''
+    BaseStyle && BaseStyle.getThemeStyleSheet ? BaseStyle.getThemeStyleSheet(undefined, styleProps) : ''
 ].join('');
 
 const defineNitroPlugin = (def) => def;
-const _dpryvML67D = defineNitroPlugin(async (nitroApp) => {
+const _oiVirWfPlyeb_BkB_8BA_diBg4NMntKIVpOy0ZjwY1E = defineNitroPlugin(async (nitroApp) => {
   nitroApp.hooks.hook("render:html", (html) => {
     html.head.unshift(stylesToTop);
     html.head.push(styles$2);
@@ -7263,85 +7379,69 @@ const _dpryvML67D = defineNitroPlugin(async (nitroApp) => {
 });
 
 const plugins = [
-  _IewG2GrHmh,
-_n3O99JdZZW,
-_OiYrEA4UFW,
-_dpryvML67D
+  _ea_Xk4ntUXZUM3yRLiKiKmPjgPWvn0WXFlAMj73oCzA,
+_mc0yPioS9HlvMsrcTD8IOnxHdDeE35ncCBZsAbmdiXI,
+_TxzQD6m5OpRVhjHOn8SU5JRWxr388cSV8Hm8F84O4,
+_oiVirWfPlyeb_BkB_8BA_diBg4NMntKIVpOy0ZjwY1E
 ];
 
-const errorHandler = (async function errorhandler(error, event) {
-  const { stack, statusCode, statusMessage, message } = normalizeError(error);
-  const errorObject = {
-    url: event.path,
-    statusCode,
-    statusMessage,
-    message,
-    stack: statusCode !== 404 ? `<pre>${stack.map((i) => `<span class="stack${i.internal ? " internal" : ""}">${i.text}</span>`).join("\n")}</pre>` : "",
-    // TODO: check and validate error.data for serialisation into query
-    data: error.data
-  };
-  if (error.unhandled || error.fatal) {
-    const tags = [
-      "[nuxt]",
-      "[request error]",
-      error.unhandled && "[unhandled]",
-      error.fatal && "[fatal]",
-      Number(errorObject.statusCode) !== 200 && `[${errorObject.statusCode}]`
-    ].filter(Boolean).join(" ");
-    console.error(tags, errorObject.message + "\n" + stack.map((l) => "  " + l.text).join("  \n"));
-  }
-  if (event.handled) {
-    return;
-  }
-  setResponseStatus(event, errorObject.statusCode !== 200 && errorObject.statusCode || 500, errorObject.statusMessage);
-  if (isJsonRequest(event)) {
-    setResponseHeader(event, "Content-Type", "application/json");
-    return send(event, JSON.stringify(errorObject));
-  }
-  const reqHeaders = getRequestHeaders(event);
-  const isRenderingError = event.path.startsWith("/__nuxt_error") || !!reqHeaders["x-nuxt-error"];
-  const res = isRenderingError ? null : await useNitroApp().localFetch(
-    withQuery(joinURL(useRuntimeConfig(event).app.baseURL, "/__nuxt_error"), errorObject),
-    {
-      headers: { ...reqHeaders, "x-nuxt-error": "true" },
-      redirect: "manual"
-    }
-  ).catch(() => null);
-  if (!res) {
-    const { template } = await Promise.resolve().then(function () { return errorDev; }) ;
-    {
-      errorObject.description = errorObject.message;
-    }
-    if (event.handled) {
-      return;
-    }
-    setResponseHeader(event, "Content-Type", "text/html;charset=UTF-8");
-    return send(event, template(errorObject));
-  }
-  const html = await res.text();
-  if (event.handled) {
-    return;
-  }
-  for (const [header, value] of res.headers.entries()) {
-    setResponseHeader(event, header, value);
-  }
-  setResponseStatus(event, res.status && res.status !== 200 ? res.status : void 0, res.statusText);
-  return send(event, html);
-});
-
-const _lazy_XO253C = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_CRGeVc = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_XO253C, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_XO253C, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_CRGeVc, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_CRGeVc, lazy: true, middleware: false, method: undefined }
 ];
+
+function _captureError(error, type) {
+  console.error(`[${type}]`, error);
+  useNitroApp().captureError(error, { tags: [type] });
+}
+function trapUnhandledNodeErrors() {
+  process.on(
+    "unhandledRejection",
+    (error) => _captureError(error, "unhandledRejection")
+  );
+  process.on(
+    "uncaughtException",
+    (error) => _captureError(error, "uncaughtException")
+  );
+}
+function joinHeaders(value) {
+  return Array.isArray(value) ? value.join(", ") : String(value);
+}
+function normalizeFetchResponse(response) {
+  if (!response.headers.has("set-cookie")) {
+    return response;
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: normalizeCookieHeaders(response.headers)
+  });
+}
+function normalizeCookieHeader(header = "") {
+  return splitCookiesString(joinHeaders(header));
+}
+function normalizeCookieHeaders(headers) {
+  const outgoingHeaders = new Headers();
+  for (const [name, header] of headers) {
+    if (name === "set-cookie") {
+      for (const cookie of normalizeCookieHeader(header)) {
+        outgoingHeaders.append("set-cookie", cookie);
+      }
+    } else {
+      outgoingHeaders.set(name, joinHeaders(header));
+    }
+  }
+  return outgoingHeaders;
+}
 
 function createNitroApp() {
   const config = useRuntimeConfig();
   const hooks = createHooks();
   const captureError = (error, context = {}) => {
-    const promise = hooks.callHookParallel("error", error, context).catch((_err) => {
-      console.error("Error while capturing another error", _err);
+    const promise = hooks.callHookParallel("error", error, context).catch((error_) => {
+      console.error("Error while capturing another error", error_);
     });
     if (context.event && isEvent(context.event)) {
       const errors = context.event.context.nitro?.errors;
@@ -7360,17 +7460,17 @@ function createNitroApp() {
       return errorHandler(error, event);
     },
     onRequest: async (event) => {
-      await nitroApp.hooks.callHook("request", event).catch((error) => {
+      await nitroApp$1.hooks.callHook("request", event).catch((error) => {
         captureError(error, { event, tags: ["request"] });
       });
     },
     onBeforeResponse: async (event, response) => {
-      await nitroApp.hooks.callHook("beforeResponse", event, response).catch((error) => {
+      await nitroApp$1.hooks.callHook("beforeResponse", event, response).catch((error) => {
         captureError(error, { event, tags: ["request", "response"] });
       });
     },
     onAfterResponse: async (event, response) => {
-      await nitroApp.hooks.callHook("afterResponse", event, response).catch((error) => {
+      await nitroApp$1.hooks.callHook("afterResponse", event, response).catch((error) => {
         captureError(error, { event, tags: ["request", "response"] });
       });
     }
@@ -7378,12 +7478,19 @@ function createNitroApp() {
   const router = createRouter$1({
     preemptive: true
   });
-  const localCall = createCall(toNodeListener(h3App));
-  const _localFetch = createFetch(localCall, globalThis.fetch);
-  const localFetch = (input, init) => _localFetch(input, init).then(
-    (response) => normalizeFetchResponse(response)
-  );
-  const $fetch = createFetch$1({
+  const nodeHandler = toNodeListener(h3App);
+  const localCall = (aRequest) => callNodeRequestHandler(nodeHandler, aRequest);
+  const localFetch = (input, init) => {
+    if (!input.toString().startsWith("/")) {
+      return globalThis.fetch(input, init);
+    }
+    return fetchNodeRequestHandler(
+      nodeHandler,
+      input,
+      init
+    ).then((response) => normalizeFetchResponse(response));
+  };
+  const $fetch = createFetch({
     fetch: localFetch,
     Headers: Headers$1,
     defaults: { baseURL: config.app.baseURL }
@@ -7445,39 +7552,50 @@ function createNitroApp() {
     localFetch,
     captureError
   };
-  for (const plugin of plugins) {
-    try {
-      plugin(app);
-    } catch (err) {
-      captureError(err, { tags: ["plugin"] });
-      throw err;
-    }
-  }
   return app;
 }
-const nitroApp = createNitroApp();
-const useNitroApp = () => nitroApp;
+function runNitroPlugins(nitroApp2) {
+  for (const plugin of plugins) {
+    try {
+      plugin(nitroApp2);
+    } catch (error) {
+      nitroApp2.captureError(error, { tags: ["plugin"] });
+      throw error;
+    }
+  }
+}
+const nitroApp$1 = createNitroApp();
+function useNitroApp() {
+  return nitroApp$1;
+}
+runNitroPlugins(nitroApp$1);
 
+const { NITRO_NO_UNIX_SOCKET, NITRO_DEV_WORKER_DIR, NITRO_DEV_WORKER_ID } = process.env;
+const nitroApp = useNitroApp();
 const server = new Server(toNodeListener(nitroApp.h3App));
 function getAddress() {
-  if (d === "stackblitz" || process.env.NITRO_NO_UNIX_SOCKET || process.versions.bun) {
+  if (NITRO_NO_UNIX_SOCKET || process.versions.webcontainer) {
     return 0;
   }
-  const socketName = `worker-${process.pid}-${threadId}.sock`;
-  if (a) {
-    return join("\\\\.\\pipe\\nitro", socketName);
-  } else {
-    const socketDir = join(tmpdir(), "nitro");
-    mkdirSync(socketDir, { recursive: true });
-    return join(socketDir, socketName);
+  const socketName = `worker-${process.pid}-${threadId}-${NITRO_DEV_WORKER_ID}.sock`;
+  switch (process.platform) {
+    case "win32": {
+      return join(String.raw`\\.\pipe\nitro`, socketName);
+    }
+    case "linux": {
+      return `\0${socketName}`;
+    }
+    default: {
+      return join(NITRO_DEV_WORKER_DIR || ".", socketName);
+    }
   }
 }
 const listenAddress = getAddress();
 server.listen(listenAddress, () => {
   const _address = server.address();
-  parentPort.postMessage({
+  parentPort?.postMessage({
     event: "listen",
-    address: typeof _address === "string" ? { socketPath: _address } : { host: "localhost", port: _address.port }
+    address: typeof _address === "string" ? { socketPath: _address } : { host: "localhost", port: _address?.port }
   });
 });
 nitroApp.router.get(
@@ -7510,67 +7628,57 @@ trapUnhandledNodeErrors();
 async function onShutdown(signal) {
   await nitroApp.hooks.callHook("close");
 }
-parentPort.on("message", async (msg) => {
+parentPort?.on("message", async (msg) => {
   if (msg && msg.event === "shutdown") {
     await onShutdown();
-    parentPort.postMessage({ event: "exit" });
+    parentPort?.postMessage({ event: "exit" });
   }
 });
 
-const _messages = {"appName":"Nuxt","version":"","statusCode":500,"statusMessage":"Server error","description":"An error occurred in the application and the page could not be served. If you are the application owner, check your server logs for details.","stack":""};
-const _render = function({ messages }) {
-var __t, __p = '';
-__p += '<!DOCTYPE html><html data-critters-container><head><title>' +
-((__t = ( messages.statusCode )) == null ? '' : __t) +
-' - ' +
-((__t = ( messages.statusMessage )) == null ? '' : __t) +
-' | ' +
-((__t = ( messages.appName )) == null ? '' : __t) +
-'</title><meta charset="utf-8"><meta content="width=device-width,initial-scale=1,minimum-scale=1" name="viewport"><style>.spotlight{background:linear-gradient(45deg, #00DC82 0%, #36E4DA 50%, #0047E1 100%);opacity:0.8;filter:blur(30vh);height:60vh;bottom:-40vh}*,:before,:after{box-sizing:border-box;border-width:0;border-style:solid;border-color:var(--un-default-border-color, #e5e7eb)}:before,:after{--un-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}h1{font-size:inherit;font-weight:inherit}pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}h1,p,pre{margin:0}*,:before,:after{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-z:0;--un-scale-x:1;--un-scale-y:1;--un-scale-z:1;--un-skew-x:0;--un-skew-y:0;--un-translate-x:0;--un-translate-y:0;--un-translate-z:0;--un-pan-x: ;--un-pan-y: ;--un-pinch-zoom: ;--un-scroll-snap-strictness:proximity;--un-ordinal: ;--un-slashed-zero: ;--un-numeric-figure: ;--un-numeric-spacing: ;--un-numeric-fraction: ;--un-border-spacing-x:0;--un-border-spacing-y:0;--un-ring-offset-shadow:0 0 rgb(0 0 0 / 0);--un-ring-shadow:0 0 rgb(0 0 0 / 0);--un-shadow-inset: ;--un-shadow:0 0 rgb(0 0 0 / 0);--un-ring-inset: ;--un-ring-offset-width:0px;--un-ring-offset-color:#fff;--un-ring-width:0px;--un-ring-color:rgb(147 197 253 / .5);--un-blur: ;--un-brightness: ;--un-contrast: ;--un-drop-shadow: ;--un-grayscale: ;--un-hue-rotate: ;--un-invert: ;--un-saturate: ;--un-sepia: ;--un-backdrop-blur: ;--un-backdrop-brightness: ;--un-backdrop-contrast: ;--un-backdrop-grayscale: ;--un-backdrop-hue-rotate: ;--un-backdrop-invert: ;--un-backdrop-opacity: ;--un-backdrop-saturate: ;--un-backdrop-sepia: }.fixed{position:fixed}.left-0{left:0}.right-0{right:0}.z-10{z-index:10}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.h-auto{height:auto}.min-h-screen{min-height:100vh}.flex{display:flex}.flex-1{flex:1 1 0%}.flex-col{flex-direction:column}.overflow-y-auto{overflow-y:auto}.rounded-t-md{border-top-left-radius:.375rem;border-top-right-radius:.375rem}.bg-black\\/5{background-color:#0000000d}.bg-white{--un-bg-opacity:1;background-color:rgb(255 255 255 / var(--un-bg-opacity))}.p-8{padding:2rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.pt-14{padding-top:3.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-black{--un-text-opacity:1;color:rgb(0 0 0 / var(--un-text-opacity))}.font-light{font-weight:300}.font-medium{font-weight:500}.leading-tight{line-height:1.25}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji"}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@media (prefers-color-scheme: dark){.dark\\:bg-black{--un-bg-opacity:1;background-color:rgb(0 0 0 / var(--un-bg-opacity))}.dark\\:bg-white\\/10{background-color:#ffffff1a}.dark\\:text-white{--un-text-opacity:1;color:rgb(255 255 255 / var(--un-text-opacity))}}@media (min-width: 640px){.sm\\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\\:text-8xl{font-size:6rem;line-height:1}}</style><script>(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll(\'link[rel="modulepreload"]\'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&i(o)}).observe(document,{childList:!0,subtree:!0});function s(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=s(e);fetch(e.href,r)}})();</script></head><body class="font-sans antialiased bg-white px-10 pt-14 dark:bg-black text-black dark:text-white min-h-screen flex flex-col"><div class="fixed left-0 right-0 spotlight"></div><h1 class="text-6xl sm:text-8xl font-medium mb-6">' +
-((__t = ( messages.statusCode )) == null ? '' : __t) +
-'</h1><p class="text-xl sm:text-2xl font-light mb-8 leading-tight">' +
-((__t = ( messages.description )) == null ? '' : __t) +
-'</p><div class="bg-white rounded-t-md bg-black/5 dark:bg-white/10 flex-1 overflow-y-auto h-auto"><pre class="text-xl font-light leading-tight z-10 p-8">' +
-((__t = ( messages.stack )) == null ? '' : __t) +
-'</pre></div></body></html>';
-return __p
+const _messages = { "appName": "Nuxt", "version": "", "statusCode": 500, "statusMessage": "Server error", "description": "An error occurred in the application and the page could not be served. If you are the application owner, check your server logs for details.", "stack": "" };
+const template$1 = (messages) => {
+  messages = { ..._messages, ...messages };
+  return '<!DOCTYPE html><html lang="en"><head><title>' + messages.statusCode + " - " + messages.statusMessage + " | " + messages.appName + `</title><meta charset="utf-8"><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0" name="viewport"><style>.spotlight{background:linear-gradient(45deg,#00dc82,#36e4da 50%,#0047e1);bottom:-40vh;filter:blur(30vh);height:60vh;opacity:.8}*,:after,:before{border-color:var(--un-default-border-color,#e5e7eb);border-style:solid;border-width:0;box-sizing:border-box}:after,:before{--un-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-moz-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}body{line-height:inherit;margin:0}h1{font-size:inherit;font-weight:inherit}pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-size:1em;font-variation-settings:normal}h1,p,pre{margin:0}*,:after,:before{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-z:0;--un-scale-x:1;--un-scale-y:1;--un-scale-z:1;--un-skew-x:0;--un-skew-y:0;--un-translate-x:0;--un-translate-y:0;--un-translate-z:0;--un-pan-x: ;--un-pan-y: ;--un-pinch-zoom: ;--un-scroll-snap-strictness:proximity;--un-ordinal: ;--un-slashed-zero: ;--un-numeric-figure: ;--un-numeric-spacing: ;--un-numeric-fraction: ;--un-border-spacing-x:0;--un-border-spacing-y:0;--un-ring-offset-shadow:0 0 transparent;--un-ring-shadow:0 0 transparent;--un-shadow-inset: ;--un-shadow:0 0 transparent;--un-ring-inset: ;--un-ring-offset-width:0px;--un-ring-offset-color:#fff;--un-ring-width:0px;--un-ring-color:rgba(147,197,253,.5);--un-blur: ;--un-brightness: ;--un-contrast: ;--un-drop-shadow: ;--un-grayscale: ;--un-hue-rotate: ;--un-invert: ;--un-saturate: ;--un-sepia: ;--un-backdrop-blur: ;--un-backdrop-brightness: ;--un-backdrop-contrast: ;--un-backdrop-grayscale: ;--un-backdrop-hue-rotate: ;--un-backdrop-invert: ;--un-backdrop-opacity: ;--un-backdrop-saturate: ;--un-backdrop-sepia: }.fixed{position:fixed}.left-0{left:0}.right-0{right:0}.z-10{z-index:10}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.h-auto{height:auto}.min-h-screen{min-height:100vh}.flex{display:flex}.flex-1{flex:1 1 0%}.flex-col{flex-direction:column}.overflow-y-auto{overflow-y:auto}.rounded-t-md{border-top-left-radius:.375rem;border-top-right-radius:.375rem}.bg-black\\/5{background-color:#0000000d}.bg-white{--un-bg-opacity:1;background-color:rgb(255 255 255/var(--un-bg-opacity))}.p-8{padding:2rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.pt-14{padding-top:3.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-black{--un-text-opacity:1;color:rgb(0 0 0/var(--un-text-opacity))}.font-light{font-weight:300}.font-medium{font-weight:500}.leading-tight{line-height:1.25}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@media (prefers-color-scheme:dark){.dark\\:bg-black{--un-bg-opacity:1;background-color:rgb(0 0 0/var(--un-bg-opacity))}.dark\\:bg-white\\/10{background-color:#ffffff1a}.dark\\:text-white{--un-text-opacity:1;color:rgb(255 255 255/var(--un-text-opacity))}}@media (min-width:640px){.sm\\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\\:text-8xl{font-size:6rem;line-height:1}}</style><script>!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver((e=>{for(const o of e)if("childList"===o.type)for(const e of o.addedNodes)"LINK"===e.tagName&&"modulepreload"===e.rel&&r(e)})).observe(document,{childList:!0,subtree:!0})}function r(e){if(e.ep)return;e.ep=!0;const r=function(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),"use-credentials"===e.crossOrigin?r.credentials="include":"anonymous"===e.crossOrigin?r.credentials="omit":r.credentials="same-origin",r}(e);fetch(e.href,r)}}();<\/script></head><body class="antialiased bg-white dark:bg-black dark:text-white flex flex-col font-sans min-h-screen pt-14 px-10 text-black"><div class="fixed left-0 right-0 spotlight"></div><h1 class="font-medium mb-6 sm:text-8xl text-6xl">` + messages.statusCode + '</h1><p class="font-light leading-tight mb-8 sm:text-2xl text-xl">' + messages.description + '</p><div class="bg-black/5 bg-white dark:bg-white/10 flex-1 h-auto overflow-y-auto rounded-t-md"><pre class="font-light leading-tight p-8 text-xl z-10">' + messages.stack + "</pre></div></body></html>";
 };
-const _template = (messages) => _render({ messages: { ..._messages, ...messages } });
-const template$1 = _template;
 
 const errorDev = /*#__PURE__*/Object.freeze({
   __proto__: null,
   template: template$1
 });
 
-const Vue3 = version.startsWith("3");
+const Vue3 = version[0] === "3";
 
 function resolveUnref(r) {
   return typeof r === "function" ? r() : unref(r);
 }
-function resolveUnrefHeadInput(ref, lastKey = "") {
-  if (ref instanceof Promise)
+function resolveUnrefHeadInput(ref) {
+  if (ref instanceof Promise || ref instanceof Date || ref instanceof RegExp)
     return ref;
   const root = resolveUnref(ref);
   if (!ref || !root)
     return root;
   if (Array.isArray(root))
-    return root.map((r) => resolveUnrefHeadInput(r, lastKey));
+    return root.map((r) => resolveUnrefHeadInput(r));
   if (typeof root === "object") {
-    return Object.fromEntries(
-      Object.entries(root).map(([k, v]) => {
-        if (k === "titleTemplate" || k.startsWith("on"))
-          return [k, unref(v)];
-        return [k, resolveUnrefHeadInput(v, k)];
-      })
-    );
+    const resolved = {};
+    for (const k in root) {
+      if (!Object.prototype.hasOwnProperty.call(root, k)) {
+        continue;
+      }
+      if (k === "titleTemplate" || k[0] === "o" && k[1] === "n") {
+        resolved[k] = unref(root[k]);
+        continue;
+      }
+      resolved[k] = resolveUnrefHeadInput(root[k]);
+    }
+    return resolved;
   }
   return root;
 }
 
 const VueReactivityPlugin = defineHeadPlugin({
   hooks: {
-    "entries:resolve": function(ctx) {
+    "entries:resolve": (ctx) => {
       for (const entry of ctx.entries)
         entry.resolvedInput = resolveUnrefHeadInput(entry.input);
     }
@@ -7597,17 +7705,9 @@ function createServerHead(options = {}) {
   return head;
 }
 
-const unheadPlugins = [];
+const unheadPlugins = true ? [CapoPlugin({ track: true })] : [];
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
-
-const appRootId = "__nuxt";
-
-const appRootTag = "div";
-
-const appTeleportTag = "div";
-
-const appTeleportId = "teleports";
+const renderSSRHeadOptions = {"omitLineBreaks":false};
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
@@ -7640,7 +7740,11 @@ const getSSRRenderer = lazyCachedFunction(async () => {
 });
 const getSPARenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
-  const spaTemplate = await Promise.resolve().then(function () { return _virtual__spaTemplate; }).then((r) => r.template).catch(() => "").then((r) => APP_ROOT_OPEN_TAG + r + APP_ROOT_CLOSE_TAG);
+  const spaTemplate = await Promise.resolve().then(function () { return _virtual__spaTemplate; }).then((r) => r.template).catch(() => "").then((r) => {
+    {
+      return APP_ROOT_OPEN_TAG + r + APP_ROOT_CLOSE_TAG;
+    }
+  });
   const options = {
     manifest,
     renderToString: () => spaTemplate,
@@ -7652,13 +7756,7 @@ const getSPARenderer = lazyCachedFunction(async () => {
   const renderToString = (ssrContext) => {
     const config = useRuntimeConfig(ssrContext.event);
     ssrContext.modules = ssrContext.modules || /* @__PURE__ */ new Set();
-    ssrContext.payload = {
-      _errors: {},
-      serverRendered: false,
-      data: {},
-      state: {},
-      once: /* @__PURE__ */ new Set()
-    };
+    ssrContext.payload.serverRendered = false;
     ssrContext.config = {
       public: config.public,
       app: config.app
@@ -7688,17 +7786,18 @@ async function getIslandContext(event) {
   };
   return ctx;
 }
-const APP_TELEPORT_OPEN_TAG = `<${appTeleportTag} id="${appTeleportId}">` ;
-const APP_TELEPORT_CLOSE_TAG = `</${appTeleportTag}>` ;
-const APP_ROOT_OPEN_TAG = `<${appRootTag}${` id="${appRootId}"` }>`;
+const HAS_APP_TELEPORTS = !!(appTeleportAttrs.id);
+const APP_TELEPORT_OPEN_TAG = HAS_APP_TELEPORTS ? `<${appTeleportTag}${propsToString(appTeleportAttrs)}>` : "";
+const APP_TELEPORT_CLOSE_TAG = HAS_APP_TELEPORTS ? `</${appTeleportTag}>` : "";
+const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
 const PAYLOAD_URL_RE = /\/_payload.json(\?.*)?$/ ;
-const ROOT_NODE_REGEX = new RegExp(`^${APP_ROOT_OPEN_TAG}([\\s\\S]*)${APP_ROOT_CLOSE_TAG}$`);
+const ROOT_NODE_REGEX = new RegExp(`^<${appRootTag}[^>]*>([\\s\\S]*)<\\/${appRootTag}>$`);
 const renderer = defineRenderHandler(async (event) => {
   const nitroApp = useNitroApp();
   const ssrError = event.path.startsWith("/__nuxt_error") ? getQuery$1(event) : null;
   if (ssrError && ssrError.statusCode) {
-    ssrError.statusCode = parseInt(ssrError.statusCode);
+    ssrError.statusCode = Number.parseInt(ssrError.statusCode);
   }
   if (ssrError && !("__unenv__" in event.node.req)) {
     throw createError({
@@ -7733,14 +7832,8 @@ const renderer = defineRenderHandler(async (event) => {
     nuxt: void 0,
     /* NuxtApp */
     payload: ssrError ? { error: ssrError } : {},
-    _payloadReducers: {},
+    _payloadReducers: /* @__PURE__ */ Object.create(null),
     modules: /* @__PURE__ */ new Set(),
-    set _registeredComponents(value) {
-      this.modules = value;
-    },
-    get _registeredComponents() {
-      return this.modules;
-    },
     islandContext
   };
   const renderer = ssrContext.noSSR ? await getSPARenderer() : await getSSRRenderer();
@@ -7766,19 +7859,29 @@ const renderer = defineRenderHandler(async (event) => {
   const inlinedStyles = isRenderingIsland ? await renderInlineStyles(ssrContext.modules ?? []) : [];
   const NO_SCRIPTS = routeOptions.experimentalNoScripts;
   const { styles, scripts } = getRequestDependencies(ssrContext, renderer.rendererContext);
-  head.push({ style: inlinedStyles });
-  if (!isRenderingIsland || true) {
+  if (ssrContext._preloadManifest) {
+    head.push({
+      link: [
+        { rel: "preload", as: "fetch", fetchpriority: "low", crossorigin: "anonymous", href: buildAssetsURL(`builds/meta/${ssrContext.runtimeConfig.app.buildId}.json`) }
+      ]
+    }, { ...headEntryOptions, tagPriority: "low" });
+  }
+  if (inlinedStyles.length) {
+    head.push({ style: inlinedStyles });
+  }
+  {
     const link = [];
-    for (const style in styles) {
-      const resource = styles[style];
+    for (const resource of Object.values(styles)) {
       if ("inline" in getQuery(resource.file)) {
         continue;
       }
       if (!isRenderingIsland || resource.file.includes("scoped") && !resource.file.includes("pages/")) {
-        link.push({ rel: "stylesheet", href: renderer.rendererContext.buildAssetsURL(resource.file) });
+        link.push({ rel: "stylesheet", href: renderer.rendererContext.buildAssetsURL(resource.file), crossorigin: "" });
       }
     }
-    head.push({ link }, headEntryOptions);
+    if (link.length) {
+      head.push({ link }, headEntryOptions);
+    }
   }
   if (!NO_SCRIPTS && !isRenderingIsland) {
     head.push({
@@ -7788,7 +7891,7 @@ const renderer = defineRenderHandler(async (event) => {
       link: getPrefetchLinks(ssrContext, renderer.rendererContext)
     }, headEntryOptions);
     head.push({
-      script: renderPayloadJsonScript({ id: "__NUXT_DATA__", ssrContext, data: ssrContext.payload }) 
+      script: renderPayloadJsonScript({ ssrContext, data: ssrContext.payload }) 
     }, {
       ...headEntryOptions,
       // this should come before another end of body scripts
@@ -7802,41 +7905,44 @@ const renderer = defineRenderHandler(async (event) => {
         type: resource.module ? "module" : null,
         src: renderer.rendererContext.buildAssetsURL(resource.file),
         defer: resource.module ? null : true,
+        // if we are rendering script tag payloads that import an async payload
+        // we need to ensure this resolves before executing the Nuxt entry
+        tagPosition: "head",
         crossorigin: ""
       }))
     }, headEntryOptions);
   }
-  const { headTags, bodyTags, bodyTagsOpen, htmlAttrs, bodyAttrs } = await renderSSRHead(head);
+  const { headTags, bodyTags, bodyTagsOpen, htmlAttrs, bodyAttrs } = await renderSSRHead(head, renderSSRHeadOptions);
   const htmlContext = {
     island: isRenderingIsland,
     htmlAttrs: htmlAttrs ? [htmlAttrs] : [],
-    head: normalizeChunks([headTags, ssrContext.styles]),
+    head: normalizeChunks([headTags]),
     bodyAttrs: bodyAttrs ? [bodyAttrs] : [],
     bodyPrepend: normalizeChunks([bodyTagsOpen, ssrContext.teleports?.body]),
     body: [
       replaceIslandTeleports(ssrContext, _rendered.html) ,
-      APP_TELEPORT_OPEN_TAG + (joinTags([ssrContext.teleports?.[`#${appTeleportId}`]]) ) + APP_TELEPORT_CLOSE_TAG
+      APP_TELEPORT_OPEN_TAG + (HAS_APP_TELEPORTS ? joinTags([ssrContext.teleports?.[`#${appTeleportAttrs.id}`]]) : "") + APP_TELEPORT_CLOSE_TAG
     ],
     bodyAppend: [bodyTags]
   };
   await nitroApp.hooks.callHook("render:html", htmlContext, { event });
   if (isRenderingIsland && islandContext) {
-    const islandHead = {
-      link: [],
-      style: []
-    };
-    for (const tag of await head.resolveTags()) {
-      if (tag.tag === "link") {
-        islandHead.link.push({ key: "island-link-" + hash(tag.props), ...tag.props });
-      } else if (tag.tag === "style" && tag.innerHTML) {
-        islandHead.style.push({ key: "island-style-" + hash(tag.innerHTML), innerHTML: tag.innerHTML });
+    const islandHead = {};
+    for (const entry of head.headEntries()) {
+      for (const [key, value] of Object.entries(resolveUnrefHeadInput(entry.input))) {
+        const currentValue = islandHead[key];
+        if (Array.isArray(currentValue)) {
+          currentValue.push(...value);
+        }
+        islandHead[key] = value;
       }
     }
+    islandHead.link ||= [];
+    islandHead.style ||= [];
     const islandResponse = {
       id: islandContext.id,
       head: islandHead,
       html: getServerComponentHTML(htmlContext.body),
-      state: ssrContext.payload.state,
       components: getClientIslandResponse(ssrContext),
       slots: getSlotIslandResponse(ssrContext)
     };
@@ -7894,7 +8000,7 @@ async function renderInlineStyles(usedModules) {
   const styleMap = await getSSRStyles();
   const inlinedStyles = /* @__PURE__ */ new Set();
   for (const mod of usedModules) {
-    if (mod in styleMap) {
+    if (mod in styleMap && styleMap[mod]) {
       for (const style of await styleMap[mod]()) {
         inlinedStyles.add(style);
       }
@@ -7916,18 +8022,22 @@ function renderPayloadResponse(ssrContext) {
 function renderPayloadJsonScript(opts) {
   const contents = opts.data ? stringify(opts.data, opts.ssrContext._payloadReducers) : "";
   const payload = {
-    type: "application/json",
-    id: opts.id,
-    innerHTML: contents,
+    "type": "application/json",
+    "innerHTML": contents,
+    "data-nuxt-data": appId,
     "data-ssr": !(opts.ssrContext.noSSR)
   };
+  {
+    payload.id = "__NUXT_DATA__";
+  }
   if (opts.src) {
     payload["data-src"] = opts.src;
   }
+  const config = uneval(opts.ssrContext.config);
   return [
     payload,
     {
-      innerHTML: `window.__NUXT__={};window.__NUXT__.config=${uneval(opts.ssrContext.config)}`
+      innerHTML: `window.__NUXT__={};window.__NUXT__.config=${config}`
     }
   ];
 }
@@ -7940,20 +8050,20 @@ function splitPayload(ssrContext) {
 }
 function getServerComponentHTML(body) {
   const match = body[0].match(ROOT_NODE_REGEX);
-  return match ? match[1] : body[0];
+  return match?.[1] || body[0];
 }
 const SSR_SLOT_TELEPORT_MARKER = /^uid=([^;]*);slot=(.*)$/;
 const SSR_CLIENT_TELEPORT_MARKER = /^uid=([^;]*);client=(.*)$/;
-const SSR_CLIENT_SLOT_MARKER = /^island-slot=(?:[^;]*);(.*)$/;
+const SSR_CLIENT_SLOT_MARKER = /^island-slot=[^;]*;(.*)$/;
 function getSlotIslandResponse(ssrContext) {
   if (!ssrContext.islandContext || !Object.keys(ssrContext.islandContext.slots).length) {
     return void 0;
   }
   const response = {};
-  for (const slot in ssrContext.islandContext.slots) {
-    response[slot] = {
-      ...ssrContext.islandContext.slots[slot],
-      fallback: ssrContext.teleports?.[`island-fallback=${slot}`]
+  for (const [name, slot] of Object.entries(ssrContext.islandContext.slots)) {
+    response[name] = {
+      ...slot,
+      fallback: ssrContext.teleports?.[`island-fallback=${name}`]
     };
   }
   return response;
@@ -7963,10 +8073,10 @@ function getClientIslandResponse(ssrContext) {
     return void 0;
   }
   const response = {};
-  for (const clientUid in ssrContext.islandContext.components) {
-    const html = ssrContext.teleports?.[clientUid] || "";
+  for (const [clientUid, component] of Object.entries(ssrContext.islandContext.components)) {
+    const html = ssrContext.teleports?.[clientUid]?.replaceAll("<!--teleport start anchor-->", "") || "";
     response[clientUid] = {
-      ...ssrContext.islandContext.components[clientUid],
+      ...component,
       html,
       slots: getComponentSlotTeleport(ssrContext.teleports ?? {})
     };
@@ -8000,7 +8110,7 @@ function replaceIslandTeleports(ssrContext, html) {
       if (!uid || !clientId) {
         continue;
       }
-      html = html.replace(new RegExp(` data-island-component="${clientId}"[^>]*>`), (full) => {
+      html = html.replace(new RegExp(` data-island-uid="${uid}" data-island-component="${clientId}"[^>]*>`), (full) => {
         return full + teleports[key];
       });
       continue;

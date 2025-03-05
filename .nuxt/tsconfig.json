@@ -2,6 +2,12 @@
 {
   "compilerOptions": {
     "paths": {
+      "nitropack/types": [
+        "../node_modules/nitropack/types"
+      ],
+      "nitropack/runtime": [
+        "../node_modules/nitropack/runtime"
+      ],
       "nitropack": [
         "../node_modules/nitropack"
       ],
@@ -20,20 +26,26 @@
       "@unhead/vue": [
         "../node_modules/@unhead/vue"
       ],
+      "@nuxt/devtools": [
+        "../node_modules/@nuxt/devtools"
+      ],
       "@vue/runtime-core": [
         "../node_modules/@vue/runtime-core"
       ],
       "@vue/compiler-sfc": [
         "../node_modules/@vue/compiler-sfc"
       ],
-      "@vue/runtime-dom": [
-        "../node_modules/@vue/runtime-dom"
+      "unplugin-vue-router/client": [
+        "../node_modules/unplugin-vue-router/client"
       ],
       "@nuxt/schema": [
         "../node_modules/@nuxt/schema"
       ],
       "nuxt": [
         "../node_modules/nuxt"
+      ],
+      "vite/client": [
+        "../node_modules/vite/client"
       ],
       "~": [
         ".."
@@ -58,6 +70,9 @@
       ],
       "@@/*": [
         "../*"
+      ],
+      "#shared": [
+        "../shared"
       ],
       "assets": [
         "../assets"
@@ -135,7 +150,7 @@
         "./primevue-style.mjs"
       ],
       "#vue-router": [
-        "./vue-router-stub"
+        "../node_modules/vue-router"
       ],
       "#imports": [
         "./imports"
@@ -143,35 +158,44 @@
       "#app-manifest": [
         "./manifest/meta/dev"
       ],
+      "#components": [
+        "./components"
+      ],
       "#build": [
         "."
       ],
       "#build/*": [
         "./*"
-      ],
-      "#components": [
-        "./components"
       ]
     },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": false,
     "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "module": "preserve",
+    "noEmit": true,
+    "lib": [
+      "ESNext",
+      "dom",
+      "dom.iterable",
+      "webworker"
+    ],
     "jsx": "preserve",
     "jsxImportSource": "vue",
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "useDefineForClassFields": true,
-    "strict": true,
-    "noImplicitThis": true,
-    "esModuleInterop": true,
     "types": [
       "swiper/vue"
     ],
-    "verbatimModuleSyntax": true,
-    "allowJs": true,
-    "noEmit": true,
-    "resolveJsonModule": true,
+    "moduleResolution": "Bundler",
+    "useDefineForClassFields": true,
+    "noImplicitThis": true,
     "allowSyntheticDefaultImports": true
   },
   "include": [
@@ -179,31 +203,61 @@
     "../.config/nuxt.*",
     "../**/*",
     "../node_modules/nuxt-icon/runtime",
+    "../node_modules/nuxt-icon/dist/runtime",
     "../node_modules/@nuxtjs/color-mode/runtime",
+    "../node_modules/@nuxtjs/color-mode/dist/runtime",
     "../node_modules/@nuxtjs/tailwindcss/runtime",
+    "../node_modules/@nuxtjs/tailwindcss/dist/runtime",
     "../node_modules/@nuxt/ui/runtime",
+    "../node_modules/@nuxt/ui/dist/runtime",
     "../node_modules/@nuxtjs/i18n/runtime",
+    "../node_modules/@nuxtjs/i18n/dist/runtime",
     "../node_modules/@pinia/nuxt/runtime",
+    "../node_modules/@pinia/nuxt/dist/runtime",
     "../node_modules/nuxt-swiper/runtime",
+    "../node_modules/nuxt-swiper/dist/runtime",
     "../node_modules/@primevue/nuxt-module/runtime",
+    "../node_modules/@primevue/nuxt-module/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
+    "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
+    "../node_modules/@nuxt/telemetry/dist/runtime",
     ".."
   ],
   "exclude": [
+    "../dist",
     "../node_modules",
     "../node_modules/nuxt/node_modules",
+    "../node_modules/nuxt-icon/node_modules",
+    "../node_modules/@nuxtjs/color-mode/node_modules",
+    "../node_modules/@nuxtjs/tailwindcss/node_modules",
+    "../node_modules/@nuxt/ui/node_modules",
+    "../node_modules/@nuxtjs/i18n/node_modules",
+    "../node_modules/@pinia/nuxt/node_modules",
+    "../node_modules/nuxt-swiper/node_modules",
+    "../node_modules/@primevue/nuxt-module/node_modules",
+    "../node_modules/@nuxt/devtools/node_modules",
+    "../node_modules/@nuxt/telemetry/node_modules",
     "../node_modules/nuxt-icon/runtime/server",
+    "../node_modules/nuxt-icon/dist/runtime/server",
     "../node_modules/@nuxtjs/color-mode/runtime/server",
+    "../node_modules/@nuxtjs/color-mode/dist/runtime/server",
     "../node_modules/@nuxtjs/tailwindcss/runtime/server",
+    "../node_modules/@nuxtjs/tailwindcss/dist/runtime/server",
     "../node_modules/@nuxt/ui/runtime/server",
+    "../node_modules/@nuxt/ui/dist/runtime/server",
     "../node_modules/@nuxtjs/i18n/runtime/server",
+    "../node_modules/@nuxtjs/i18n/dist/runtime/server",
     "../node_modules/@pinia/nuxt/runtime/server",
+    "../node_modules/@pinia/nuxt/dist/runtime/server",
     "../node_modules/nuxt-swiper/runtime/server",
+    "../node_modules/nuxt-swiper/dist/runtime/server",
     "../node_modules/@primevue/nuxt-module/runtime/server",
+    "../node_modules/@primevue/nuxt-module/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
+    "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
-    "../dist",
+    "../node_modules/@nuxt/telemetry/dist/runtime/server",
     "../.output"
   ]
 }

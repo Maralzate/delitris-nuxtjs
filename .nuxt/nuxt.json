@@ -1,9 +1,9 @@
 {
-  "_hash": "Os0n8N0DuN",
+  "_hash": "85SppiOLIKmy2Mmuc2LLNtHHty1JpczfTpUtXJX7AHg",
   "project": {
     "rootDir": "/home/developer/Documents/projects/delitris-nuxtjs"
   },
   "versions": {
-    "nuxt": "3.11.2"
+    "nuxt": "3.15.4"
   }
 }

@@ -1,25 +1,210 @@
-import { NuxtModule, RuntimeConfig } from 'nuxt/schema'
-declare module 'nuxt/schema' {
+import { NuxtModule, RuntimeConfig } from '@nuxt/schema'
+declare module '@nuxt/schema' {
+  interface NuxtOptions {
+    /**
+     * Configuration for `nuxt-icon`
+     */
+    ["icon"]: typeof import("nuxt-icon").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/color-mode`
+     */
+    ["colorMode"]: typeof import("@nuxtjs/color-mode").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/tailwindcss`
+     */
+    ["tailwindcss"]: typeof import("@nuxtjs/tailwindcss").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/ui`
+     */
+    ["ui"]: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/i18n`
+     */
+    ["i18n"]: typeof import("@nuxtjs/i18n").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@pinia/nuxt`
+     */
+    ["pinia"]: typeof import("@pinia/nuxt").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `nuxt-swiper`
+     */
+    ["swiper"]: typeof import("nuxt-swiper").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@primevue/nuxt-module`
+     */
+    ["primevue"]: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/devtools`
+     */
+    ["devtools"]: typeof import("@nuxt/devtools").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/telemetry`
+     */
+    ["telemetry"]: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? O : Record<string, any>
+  }
   interface NuxtConfig {
+    /**
+     * Configuration for `nuxt-icon`
+     */
     ["icon"]?: typeof import("nuxt-icon").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/color-mode`
+     */
     ["colorMode"]?: typeof import("@nuxtjs/color-mode").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/tailwindcss`
+     */
     ["tailwindcss"]?: typeof import("@nuxtjs/tailwindcss").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxt/ui`
+     */
     ["ui"]?: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/i18n`
+     */
     ["i18n"]?: typeof import("@nuxtjs/i18n").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@pinia/nuxt`
+     */
     ["pinia"]?: typeof import("@pinia/nuxt").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `nuxt-swiper`
+     */
     ["swiper"]?: typeof import("nuxt-swiper").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@primevue/nuxt-module`
+     */
     ["primevue"]?: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxt/devtools`
+     */
     ["devtools"]?: typeof import("@nuxt/devtools").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxt/telemetry`
+     */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule | string | [NuxtModule | string, Record<string, any>] | ["nuxt-icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@nuxtjs/i18n", Exclude<NuxtConfig["i18n"], boolean>] | ["@pinia/nuxt", Exclude<NuxtConfig["pinia"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["@primevue/nuxt-module", Exclude<NuxtConfig["primevue"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["nuxt-icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@nuxtjs/i18n", Exclude<NuxtConfig["i18n"], boolean>] | ["@pinia/nuxt", Exclude<NuxtConfig["pinia"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["@primevue/nuxt-module", Exclude<NuxtConfig["primevue"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+  }
+}
+declare module 'nuxt/schema' {
+  interface NuxtOptions {
+    /**
+     * Configuration for `nuxt-icon`
+     * @see https://www.npmjs.com/package/nuxt-icon
+     */
+    ["icon"]: typeof import("nuxt-icon").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/color-mode`
+     * @see https://www.npmjs.com/package/@nuxtjs/color-mode
+     */
+    ["colorMode"]: typeof import("@nuxtjs/color-mode").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/tailwindcss`
+     * @see https://www.npmjs.com/package/@nuxtjs/tailwindcss
+     */
+    ["tailwindcss"]: typeof import("@nuxtjs/tailwindcss").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/ui`
+     * @see https://www.npmjs.com/package/@nuxt/ui
+     */
+    ["ui"]: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/i18n`
+     * @see https://www.npmjs.com/package/@nuxtjs/i18n
+     */
+    ["i18n"]: typeof import("@nuxtjs/i18n").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@pinia/nuxt`
+     * @see https://www.npmjs.com/package/@pinia/nuxt
+     */
+    ["pinia"]: typeof import("@pinia/nuxt").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `nuxt-swiper`
+     * @see https://www.npmjs.com/package/nuxt-swiper
+     */
+    ["swiper"]: typeof import("nuxt-swiper").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@primevue/nuxt-module`
+     * @see https://www.npmjs.com/package/@primevue/nuxt-module
+     */
+    ["primevue"]: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/devtools`
+     * @see https://www.npmjs.com/package/@nuxt/devtools
+     */
+    ["devtools"]: typeof import("@nuxt/devtools").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/telemetry`
+     * @see https://www.npmjs.com/package/@nuxt/telemetry
+     */
+    ["telemetry"]: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? O : Record<string, any>
+  }
+  interface NuxtConfig {
+    /**
+     * Configuration for `nuxt-icon`
+     * @see https://www.npmjs.com/package/nuxt-icon
+     */
+    ["icon"]?: typeof import("nuxt-icon").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/color-mode`
+     * @see https://www.npmjs.com/package/@nuxtjs/color-mode
+     */
+    ["colorMode"]?: typeof import("@nuxtjs/color-mode").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/tailwindcss`
+     * @see https://www.npmjs.com/package/@nuxtjs/tailwindcss
+     */
+    ["tailwindcss"]?: typeof import("@nuxtjs/tailwindcss").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxt/ui`
+     * @see https://www.npmjs.com/package/@nuxt/ui
+     */
+    ["ui"]?: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxtjs/i18n`
+     * @see https://www.npmjs.com/package/@nuxtjs/i18n
+     */
+    ["i18n"]?: typeof import("@nuxtjs/i18n").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@pinia/nuxt`
+     * @see https://www.npmjs.com/package/@pinia/nuxt
+     */
+    ["pinia"]?: typeof import("@pinia/nuxt").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `nuxt-swiper`
+     * @see https://www.npmjs.com/package/nuxt-swiper
+     */
+    ["swiper"]?: typeof import("nuxt-swiper").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@primevue/nuxt-module`
+     * @see https://www.npmjs.com/package/@primevue/nuxt-module
+     */
+    ["primevue"]?: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxt/devtools`
+     * @see https://www.npmjs.com/package/@nuxt/devtools
+     */
+    ["devtools"]?: typeof import("@nuxt/devtools").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@nuxt/telemetry`
+     * @see https://www.npmjs.com/package/@nuxt/telemetry
+     */
+    ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["nuxt-icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@nuxtjs/i18n", Exclude<NuxtConfig["i18n"], boolean>] | ["@pinia/nuxt", Exclude<NuxtConfig["pinia"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["@primevue/nuxt-module", Exclude<NuxtConfig["primevue"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
    app: {
+      buildId: string,
+
       baseURL: string,
 
       buildAssetsDir: string,
 
       cdnURL: string,
+   },
+
+   nitro: {
+      envPrefix: string,
    },
   }
   interface PublicRuntimeConfig {
@@ -107,531 +292,531 @@ declare module 'nuxt/schema' {
                   },
 
                   emerald: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   green: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   lime: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   red: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   orange: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   amber: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   yellow: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   teal: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   cyan: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   sky: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   blue: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   indigo: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   violet: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   purple: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   fuchsia: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   pink: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   rose: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   slate: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   gray: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   zinc: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   neutral: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   stone: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
                },
 
@@ -657,27 +842,27 @@ declare module 'nuxt/schema' {
                   anchorGutter: string,
 
                   primary: {
-                     50: string,
+                     "50": string,
 
-                     100: string,
+                     "100": string,
 
-                     200: string,
+                     "200": string,
 
-                     300: string,
+                     "300": string,
 
-                     400: string,
+                     "400": string,
 
-                     500: string,
+                     "500": string,
 
-                     600: string,
+                     "600": string,
 
-                     700: string,
+                     "700": string,
 
-                     800: string,
+                     "800": string,
 
-                     900: string,
+                     "900": string,
 
-                     950: string,
+                     "950": string,
                   },
 
                   formField: {
@@ -791,27 +976,27 @@ declare module 'nuxt/schema' {
                         surface: {
                            0: string,
 
-                           50: string,
+                           "50": string,
 
-                           100: string,
+                           "100": string,
 
-                           200: string,
+                           "200": string,
 
-                           300: string,
+                           "300": string,
 
-                           400: string,
+                           "400": string,
 
-                           500: string,
+                           "500": string,
 
-                           600: string,
+                           "600": string,
 
-                           700: string,
+                           "700": string,
 
-                           800: string,
+                           "800": string,
 
-                           900: string,
+                           "900": string,
 
-                           950: string,
+                           "950": string,
                         },
 
                         primary: {
@@ -993,27 +1178,27 @@ declare module 'nuxt/schema' {
                         surface: {
                            0: string,
 
-                           50: string,
+                           "50": string,
 
-                           100: string,
+                           "100": string,
 
-                           200: string,
+                           "200": string,
 
-                           300: string,
+                           "300": string,
 
-                           400: string,
+                           "400": string,
 
-                           500: string,
+                           "500": string,
 
-                           600: string,
+                           "600": string,
 
-                           700: string,
+                           "700": string,
 
-                           800: string,
+                           "800": string,
 
-                           900: string,
+                           "900": string,
 
-                           950: string,
+                           "950": string,
                         },
 
                         primary: {
