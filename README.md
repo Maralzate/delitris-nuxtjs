@@ -1,6 +1,8 @@
-# Basic NuxtJS Template
+# Delitris Repostería Artesanal Para Mascotas 
 
-Basic Template to init a NuxtJS 3. Project with modules pre-instaled: Tailwind, Color-Mode, Nuxt-UI, i18n , pinia.
+Este sitio web está construido con  NuxtJS 3. Project with modules pre-instaled: Tailwind, Color-Mode, Nuxt-UI, i18n , pinia.
+
+[Web Site](https://delitris.pet)
 
 ## Nuxt 3 Minimal Starter
 
