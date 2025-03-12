@@ -45,6 +45,9 @@ importers:
       '@iconify-json/solar':
         specifier: ^1.2.0
         version: 1.2.2
+      '@iconify-json/streamline':
+        specifier: ^1.2.2
+        version: 1.2.2
       '@nuxtjs/color-mode':
         specifier: ^3.4.0
         version: 3.5.2(magicast@0.3.5)
@@ -403,6 +406,9 @@ packages:
 
   '@iconify-json/solar@1.2.2':
     resolution: {integrity: sha512-lcTb6DWL4HZObiY1W3fHfuxxuQHUc6CFHFeywKEx7Ry0k+dU6POZCMC7oVLr0F8vuf+KgaQ3oOoGO/yFzOwrNg==}
+
+  '@iconify-json/streamline@1.2.2':
+    resolution: {integrity: sha512-hPa+V7Vuy4lDI06+MbeRSMEIonCADLn3+7syJHLekQT3Wh1SnHTpUh6j0zv1sBFEoYXP5TUNYM3qcadXZq9PGw==}
 
   '@iconify/collections@1.0.516':
     resolution: {integrity: sha512-Zm2XhHE++VLFYli0sjgcBDaRE6e4iBqGMNlG2RS7GQ0RF9vl6kK+MenUwGTlfaaV3wajWZ2fMO6qlfB09vR4yg==}
@@ -4054,6 +4060,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/solar@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/streamline@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 

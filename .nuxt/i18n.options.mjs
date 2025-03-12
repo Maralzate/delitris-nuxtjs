@@ -62,6 +62,7 @@ export const nuxtI18nOptions = {
   "types": "composition",
   "debug": false,
   "parallelPlugin": false,
+  "multiDomainLocales": false,
   "i18nModules": []
 }
 
