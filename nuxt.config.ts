@@ -16,6 +16,10 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/css/main.css'],
 
+  gtag: {
+    id: 'G-YSFP18J702s',
+    },
+
   primevue: {
     options: {
       theme: {
