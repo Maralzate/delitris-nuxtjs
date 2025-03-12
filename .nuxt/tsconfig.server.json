@@ -188,6 +188,7 @@
     "../node_modules/.pnpm/nuxt-icon@0.6.10_magicast@0.3.5_vite@6.1.0_@types+node@22.13.1_jiti@2.4.2_terser@5.38.2_3f195939b2c2431362ea72826d2c98ff/node_modules/nuxt-icon/runtime/server",
     "../node_modules/.pnpm/nuxt-swiper@1.2.2_magicast@0.3.5/node_modules/nuxt-swiper/runtime/server",
     "../node_modules/.pnpm/@primevue+nuxt-module@4.2.5_@babel+parser@7.26.8_magicast@0.3.5_rollup@4.34.6_vue@3.5.13_typescript@5.7.3_/node_modules/@primevue/nuxt-module/runtime/server",
+    "../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",
@@ -206,6 +207,7 @@
     "../node_modules/.pnpm/nuxt-icon@0.6.10_magicast@0.3.5_vite@6.1.0_@types+node@22.13.1_jiti@2.4.2_terser@5.38.2_3f195939b2c2431362ea72826d2c98ff/node_modules/nuxt-icon/node_modules",
     "../node_modules/.pnpm/nuxt-swiper@1.2.2_magicast@0.3.5/node_modules/nuxt-swiper/node_modules",
     "../node_modules/.pnpm/@primevue+nuxt-module@4.2.5_@babel+parser@7.26.8_magicast@0.3.5_rollup@4.34.6_vue@3.5.13_typescript@5.7.3_/node_modules/@primevue/nuxt-module/node_modules",
+    "../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/node_modules",
     "../node_modules/.pnpm/@nuxt+devtools@1.7.0_rollup@4.34.6_vite@6.1.0_@types+node@22.13.1_jiti@2.4.2_terser@5.3_a118c989ae98b9d526e53663ee496ade/node_modules/@nuxt/devtools/node_modules",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.5_magicast@0.3.5/node_modules/@nuxt/telemetry/node_modules",
     "../dist"

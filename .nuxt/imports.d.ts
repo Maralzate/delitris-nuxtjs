@@ -50,4 +50,6 @@ export { useStyle } from 'primevue/usestyle';
 export { useConfirm } from 'primevue/useconfirm';
 export { useToast } from 'primevue/usetoast';
 export { useDialog } from 'primevue/usedialog';
+export { useGtag } from '../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/dist/runtime/composables/useGtag';
+export { useTrackEvent } from '../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/dist/runtime/composables/useTrackEvent';
 export { definePageMeta } from '../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/pages/runtime/composables';

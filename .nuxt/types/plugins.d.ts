@@ -16,6 +16,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/app/plugins/chunk-reload.client.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@pinia+nuxt@0.5.5_magicast@0.3.5_typescript@5.7.3_vue@3.5.13_typescript@5.7.3_/node_modules/@pinia/nuxt/dist/runtime/plugin.vue3.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/pages/runtime/plugins/prefetch.client.js")> &
+  InjectionType<typeof import("../../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/dist/runtime/plugin.client.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@primevue+nuxt-module@4.2.5_@babel+parser@7.26.8_magicast@0.3.5_rollup@4.34.6_vue@3.5.13_typescript@5.7.3_/node_modules/@primevue/nuxt-module/dist/runtime/plugin.client.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxtjs+i18n@8.5.6_magicast@0.3.5_rollup@4.34.6_vue@3.5.13_typescript@5.7.3_/node_modules/@nuxtjs/i18n/dist/runtime/plugins/switch-locale-path-ssr.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxtjs+i18n@8.5.6_magicast@0.3.5_rollup@4.34.6_vue@3.5.13_typescript@5.7.3_/node_modules/@nuxtjs/i18n/dist/runtime/plugins/i18n.js")> &

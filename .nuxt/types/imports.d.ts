@@ -143,6 +143,7 @@ declare global {
   const useError: typeof import('../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/app/composables/error')['useError']
   const useFetch: typeof import('../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/app/composables/fetch')['useFetch']
   const useFormGroup: typeof import('../../node_modules/.pnpm/@nuxt+ui@2.21.0_change-case@5.4.4_magicast@0.3.5_typescript@5.7.3_vite@6.1.0_@types+nod_485b3e49c0dd20330f80cab694087f43/node_modules/@nuxt/ui/dist/runtime/composables/useFormGroup')['useFormGroup']
+  const useGtag: typeof import('../../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/dist/runtime/composables/useGtag')['useGtag']
   const useHead: typeof import('../../node_modules/@unhead/vue')['useHead']
   const useHeadSafe: typeof import('../../node_modules/@unhead/vue')['useHeadSafe']
   const useHydration: typeof import('../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/app/composables/hydrate')['useHydration']
@@ -218,6 +219,7 @@ declare global {
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const useTimer: typeof import('../../node_modules/.pnpm/@nuxt+ui@2.21.0_change-case@5.4.4_magicast@0.3.5_typescript@5.7.3_vite@6.1.0_@types+nod_485b3e49c0dd20330f80cab694087f43/node_modules/@nuxt/ui/dist/runtime/composables/useTimer')['useTimer']
   const useToast: typeof import('primevue/usetoast')['useToast']
+  const useTrackEvent: typeof import('../../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/dist/runtime/composables/useTrackEvent')['useTrackEvent']
   const useTransitionState: typeof import('vue')['useTransitionState']
   const useUI: typeof import('../../node_modules/.pnpm/@nuxt+ui@2.21.0_change-case@5.4.4_magicast@0.3.5_typescript@5.7.3_vite@6.1.0_@types+nod_485b3e49c0dd20330f80cab694087f43/node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']
   const watch: typeof import('vue')['watch']
@@ -383,6 +385,7 @@ declare module 'vue' {
     readonly useError: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/app/composables/error')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/app/composables/fetch')['useFetch']>
     readonly useFormGroup: UnwrapRef<typeof import('../../node_modules/.pnpm/@nuxt+ui@2.21.0_change-case@5.4.4_magicast@0.3.5_typescript@5.7.3_vite@6.1.0_@types+nod_485b3e49c0dd20330f80cab694087f43/node_modules/@nuxt/ui/dist/runtime/composables/useFormGroup')['useFormGroup']>
+    readonly useGtag: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/dist/runtime/composables/useGtag')['useGtag']>
     readonly useHead: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHeadSafe']>
     readonly useHydration: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@3.15.4_@parcel+watcher@2.5.1_@types+node@22.13.1_db0@0.2.3_ioredis@5.5.0_magicast@_d4441f3a1fc022a6a130c3812fe43003/node_modules/nuxt/dist/app/composables/hydrate')['useHydration']>
@@ -458,6 +461,7 @@ declare module 'vue' {
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
     readonly useTimer: UnwrapRef<typeof import('../../node_modules/.pnpm/@nuxt+ui@2.21.0_change-case@5.4.4_magicast@0.3.5_typescript@5.7.3_vite@6.1.0_@types+nod_485b3e49c0dd20330f80cab694087f43/node_modules/@nuxt/ui/dist/runtime/composables/useTimer')['useTimer']>
     readonly useToast: UnwrapRef<typeof import('primevue/usetoast')['useToast']>
+    readonly useTrackEvent: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt-gtag@3.0.2_magicast@0.3.5/node_modules/nuxt-gtag/dist/runtime/composables/useTrackEvent')['useTrackEvent']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
     readonly useUI: UnwrapRef<typeof import('../../node_modules/.pnpm/@nuxt+ui@2.21.0_change-case@5.4.4_magicast@0.3.5_typescript@5.7.3_vite@6.1.0_@types+nod_485b3e49c0dd20330f80cab694087f43/node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
