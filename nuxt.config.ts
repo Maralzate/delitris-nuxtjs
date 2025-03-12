@@ -3,7 +3,16 @@ import Aura from '@primevue/themes/aura';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', '@nuxtjs/color-mode', '@nuxtjs/tailwindcss', "@nuxtjs/i18n", '@pinia/nuxt', 'nuxt-icon','nuxt-swiper','@primevue/nuxt-module'],
+  modules: [
+    '@nuxt/ui', 
+    '@nuxtjs/color-mode', 
+    '@nuxtjs/tailwindcss', 
+    "@nuxtjs/i18n", 
+    '@pinia/nuxt', 
+    'nuxt-icon', 
+    'nuxt-swiper', 
+    '@primevue/nuxt-module'
+  ],
   css: ['~/assets/css/main.css'],
 
   primevue: {
