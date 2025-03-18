@@ -9,15 +9,15 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     "@nuxtjs/i18n",
     '@pinia/nuxt',
-    'nuxt-icon',
     'nuxt-swiper',
     '@primevue/nuxt-module',
-    'nuxt-gtag'
+    'nuxt-gtag',
+    'nuxt-icon'
   ],
   css: ['~/assets/css/main.css'],
 
   gtag: {
-    id: 'G-YSFP18J702s',
+    id: 'G-YSFP18J702',
     },
 
   primevue: {

@@ -5,8 +5,10 @@
                 <div class="border border-surface-200 dark:border-surface-700 rounded m-2  p-4">
                     <div class="mb-4">
                         <div class="relative mx-auto">
-                            <img :src="'/images/' + slotProps.data.image1 +'.png'" :alt="slotProps.data.title" class="w-full rounded" />
-                            <Tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute" style="left:5px; top: 5px"/>
+                            <nuxt-link :to="{name:'cakes-slug', params: {slug: slotProps.data.slug}}">
+                                <img :src="'/images/' + slotProps.data.image1 +'.png'" :alt="slotProps.data.title" class="w-full rounded" />
+                            </nuxt-link>
+                            <Tag  class="absolute" style="left:5px; top: 5px"/>
                         </div>
                     </div>
                     <div class="mb-4 font-medium text-2xl text-tris-dim dark:text-tris-soft">{{ slotProps.data.title }}</div>
@@ -18,7 +20,7 @@
                                 <div v-if="slotProps.data.animalType != 'both'">
                                     <UTooltip :text="`Ideal Para ${slotProps.data.animalType}`" :popper="{ arrow: true }">
                                     <ULink
-                                    to=""
+                                    :to="{name:'cakes-slug', params: {slug: slotProps.data.slug}}"
                                     active-class="text-tris bg-tris"
                                     inactive-class="rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
                                 >
@@ -30,7 +32,7 @@
                                 <div v-else class="">
                                     <UTooltip text="Ideal Para Perros & Gatos" :popper="{ arrow: true }">
                                     <ULink
-                                    to=""
+                                    :to="{name:'cakes-slug', params: {slug: slotProps.data.slug}}"
                                     active-class="text-tris bg-tris"
                                     inactive-class="flex items-center rounded-lg text-white ml-2 px-2 py-2 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
                                 >
@@ -43,10 +45,9 @@
                             <div>
                                 <ULink
                                     to="https://wa.me/573332850072"
-                                    active-class="text-tris bg-tris"
-                                    inactive-class="rounded-lg text-white ml-2 px-2 py-4 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
+
                                 >
-                                    <Icon name="mdi:whatsapp" size="2em"/>
+                                    <Icon name="mdi:whatsapp" class="rounded-lg text-white ml-2 px-2 py-3 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight" size="3em"/>
                                 </ULink>
                             </div>
                         </div>
@@ -89,21 +90,4 @@ const responsiveOptions = ref([
     }
 ]);
 
-const status = ""
-
-const getSeverity = (status) => {
-    switch (status) {
-        case 'INSTOCK':
-            return 'success';
-
-        case 'LOWSTOCK':
-            return 'warn';
-
-        case 'OUTOFSTOCK':
-            return 'danger';
-
-        default:
-            return null;
-    }
-};
 </script>
