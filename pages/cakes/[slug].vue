@@ -4,7 +4,7 @@ import type { Product } from '~/types/product'
 const route = useRoute()
 
 
-const {data: productA } = await useFetch<Product>('~/data/product-es.json',)
+const {data: productA } = await useFetch('~/data/product-es.json',)
 console.log(route.params.slug)
 
 const product = productA.value

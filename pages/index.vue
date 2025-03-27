@@ -16,18 +16,18 @@
         <h1 class="pt-24 mx-2 text-center text-3xl lg:text-7xl  text-tris dark:text-tris-soft">{{ $t('indexH1') }}</h1>
         <h2 class="pb-4 md:pb-24 text-center text-7xl lg:text-9xl text-tris dark:text-tris-soft">DeliTris</h2>
 
-        <div class="flex my-24">
-            <div class="pl-2 grow-7">
+        <div class="md:flex md:flex-nowrap  my-24">
+            <div class="pl-2 grow-7 md:w-1/2">
                 <h2 class="px-4 text-5xl text-tris dark:text-tris-soft">{{ $t('bakeryCom') }}</h2>
                 <p class="pt-12 pb-4 px-4 text-xl md:text-2xl dark:text-tris-soft">{{ $t('bakeryP1') }}</p>
             </div>
-            <div class="pl-2 grow-7">
+            <div class="pl-2 grow-7 md:w-1/2">
                 <Bakery ></Bakery>
             </div>
         </div>
         
         <h2  class="text-5xl pl-4 text-tris dark:text-tris-soft">{{ $t('cakeCom') }}</h2>
-        <div class="md:flex md:flex-nowrap my-24">
+        <div class="md:flex md:flex-wrap my-24">
             <div class="pl-4  ">
                 <Cake></Cake>
             </div>
@@ -36,7 +36,7 @@
             </div>
         </div> 
         
-        <div class="md:flex md:flex-nowrap my-24">
+        <div class="md:flex md:flex-wrap my-24">
             <div class=" pl-4 w-full">
                 <h2  class="text-5xl text-tris dark:text-tris-soft">{{ $t('frozenCom') }}</h2>
                 <p class="pt-12 pb-4 px-4 text-xl md:text-2xl dark:text-tris-soft">{{ $t('frozenP1') }}</p>
