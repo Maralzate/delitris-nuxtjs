@@ -6,7 +6,7 @@
                     <div class="mb-4">
                         <div class="relative mx-auto">
                             <img :src="'/images/' + slotProps.data.image1 +'.png'" :alt="slotProps.data.title" class="w-full rounded" />
-                            <Tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute" style="left:5px; top: 5px"/>
+                            <Tag :value="slotProps.data.inventoryStatus"  class="absolute" style="left:5px; top: 5px"/>
                         </div>
                     </div>
                     <div class="mb-4 font-medium text-2xl text-tris-dim dark:text-tris-soft">{{ slotProps.data.title }}</div>
@@ -44,10 +44,8 @@
                             <div>
                                 <ULink
                                     to="https://wa.me/573332850072"
-                                    active-class="text-tris bg-tris"
-                                    inactive-class="flex items-center rounded-lg text-white ml-2 px-2 py-4 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight"
                                 >
-                                    <Icon name="mdi:whatsapp" size="2em"/>
+                                    <Icon name="mdi:whatsapp" class="rounded-lg text-white ml-2 px-2 py-3 bg-tris border-tris hover:bg-logolight hover:border-logolight dark:hover:bg-logolight dark:hover:border-logolight" size="3em"/>
                                 </ULink>
                             </div>
                         </div>

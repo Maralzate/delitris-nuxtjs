@@ -3,8 +3,11 @@
         <h1>{{ $t('contactH1') }}</h1>
 
         <h2>{{ $t('contactCom') }}</h2>
+        <ContactForm></ContactForm>
     </div>
 </template>
 
 <script setup lang="ts">
+
+
 </script>
